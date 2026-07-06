@@ -15,16 +15,15 @@ const NAV_LINKS = [
   { label: 'About', href: '/about', external: true },
   { label: 'Services', href: '/services', external: true },
   { label: 'Contact', href: '/contact', external: true },
-  { label: 'Appointment', href: '/appointment', external: true },
 ]
 
 const SERVICES_FULL = [
-  { icon: Stethoscope, title: 'General OPD', text: 'Comprehensive outpatient care for all ages with expert physicians.' },
-  { icon: HeartPulse, title: 'Maternity', text: 'Expert prenatal, delivery, and postnatal care in a safe environment.' },
-  { icon: Eye, title: 'Eye Clinic', text: 'Complete vision care and eye health services for all conditions.' },
-  { icon: Smile, title: 'Dental Clinic', text: 'Full-service dental care and oral hygiene treatments.' },
-  { icon: Apple, title: 'Dietician', text: 'Personalized nutrition and dietary planning for better health.' },
-  { icon: Ambulance, title: 'Emergency', text: '24/7 emergency medical response when every minute counts.' },
+  { icon: Stethoscope, title: 'General OPD', text: 'Comprehensive outpatient care for all ages. Routine check-ups, chronic disease management, and health screenings from expert physicians.' },
+  { icon: HeartPulse, title: 'Maternity', text: 'Complete prenatal, delivery, and postnatal care. Skilled midwives and doctors support you through every stage of your journey.' },
+  { icon: Eye, title: 'Eye Clinic', text: 'Complete vision care including eye exams, refraction, glaucoma screening, and treatment of eye conditions.' },
+  { icon: Smile, title: 'Dental Clinic', text: 'Full-service dental care from routine cleanings to restorations and extractions. Oral health for the whole family.' },
+  { icon: Apple, title: 'Dietician', text: 'Personalized nutrition counseling and dietary planning for weight management, chronic conditions, and better health.' },
+  { icon: Ambulance, title: 'Emergency', text: '24/7 emergency medical response with rapid triage, stabilization, and critical care when every second counts.' },
 ]
 
 function Navbar() {
@@ -169,9 +168,9 @@ function Features() {
   }, [])
 
   const cards = [
-    { icon: Stethoscope, title: 'Expert Physicians', text: 'Our team of experienced doctors provides thorough diagnosis and personalized care for every patient.' },
-    { icon: Activity, title: 'Modern Diagnostics', text: 'State-of-the-art laboratory, ultrasound, X-ray, and CT scan equipment for accurate diagnosis.' },
-    { icon: Clock, title: '24/7 Availability', text: 'Round-the-clock emergency services and extended hours for outpatient consultations.' },
+    { icon: Stethoscope, title: 'Expert Physicians', text: 'Our team of experienced Ghanaian and international doctors provides thorough diagnosis and personalized care for every patient who walks through our doors.' },
+    { icon: Activity, title: 'Modern Diagnostics', text: 'State-of-the-art laboratory, ultrasound, X-ray, and CT scan equipment for fast and accurate diagnosis you can trust.' },
+    { icon: Clock, title: '24/7 Availability', text: 'Round-the-clock emergency services and extended hours for outpatient consultations. We are always here when you need us.' },
   ]
 
   return (
@@ -243,9 +242,9 @@ function Pillars() {
   }, [])
 
   const pillars = [
-    { target: 15, suffix: '+', label: 'Years of service', desc: 'A decade and a half of compassionate healthcare in the Pokuasi community.' },
-    { target: 24, suffix: '/7', label: 'Emergency care', desc: 'Round-the-clock emergency services. Our doors are always open.' },
-    { target: 100, suffix: '%', label: 'Dedicated to you', desc: 'Fully licensed and certified. We meet the highest standards of care.' },
+    { target: 15, suffix: '+', label: 'Years of service', desc: 'A decade and a half of compassionate healthcare in the Pokuasi community. Thousands of patients served.' },
+    { target: 24, suffix: '/7', label: 'Emergency care', desc: 'Round-the-clock emergency services. Our doors are always open, every day of the year.' },
+    { target: 100, suffix: '%', label: 'Dedicated to you', desc: 'Fully licensed and certified. We meet the highest standards of care, every single time.' },
   ]
 
   return (
@@ -310,9 +309,9 @@ function Protocol() {
   }, [])
 
   const steps = [
-    { num: '01', title: 'Consultation & Diagnosis', tagline: 'We listen first.', text: 'We hear your concerns, review your medical history, and conduct a thorough assessment. No hidden fees, only transparent advice before we proceed.', image: '/gen-consult.jpg', alt: 'Doctor consulting with patient' },
-    { num: '02', title: 'Personalized Treatment', tagline: 'Carefully planned.', text: 'We design a treatment plan tailored to your specific health needs and goals. You choose the direction. We ensure the quality of care.', image: '/hero11.webp', alt: 'Medical team reviewing treatment plan' },
-    { num: '03', title: 'Care & Follow-up', tagline: 'We stay with you.', text: 'Our commitment does not end with treatment. We provide ongoing support, follow-up consultations, and monitoring to ensure your recovery.', image: '/care-followup.webp', alt: 'Hospital exterior' },
+    { num: '01', title: 'Consultation & Diagnosis', tagline: 'We listen first.', text: 'We take time to hear your concerns, review your medical history, and conduct a thorough physical assessment. Our doctors explain findings in plain language so you understand your health. No hidden fees, only transparent advice before we proceed.', image: '/gen-consult.jpg', alt: 'Doctor consulting with patient' },
+    { num: '02', title: 'Personalized Treatment', tagline: 'Carefully planned.', text: 'We design a treatment plan tailored to your specific health needs, lifestyle, and goals. Whether it is medication, therapy, or a procedure, we walk you through every option so you can make informed decisions about your care.', image: '/hero11.webp', alt: 'Medical team reviewing treatment plan' },
+    { num: '03', title: 'Care & Follow-up', tagline: 'We stay with you.', text: 'Our commitment does not end when you leave the consultation room. We provide ongoing support, schedule follow-up appointments, and monitor your progress to ensure you recover fully and stay healthy.', image: '/care-followup.webp', alt: 'Hospital exterior' },
   ]
 
   return (
@@ -409,9 +408,9 @@ function TrustSignals() {
   }, [])
 
   const badges = [
-    { Icon: ShieldCheck, title: 'Licensed & Certified', text: 'Fully licensed private healthcare facility meeting all regulatory standards.' },
-    { Icon: Award, title: '15+ Years of Service', text: 'Over 15 years serving the Pokuasi community with quality healthcare.' },
-    { Icon: Clock, title: '24/7 Patient Care', text: 'Emergency services available around the clock, every day of the year.' },
+    { Icon: ShieldCheck, title: 'Licensed & Certified', text: 'Fully licensed private healthcare facility meeting all regulatory standards set by the Ghana Health Service.' },
+    { Icon: Award, title: '15+ Years of Service', text: 'Over 15 years serving the Pokuasi community with compassionate, quality healthcare you can count on.' },
+    { Icon: Clock, title: '24/7 Patient Care', text: 'Emergency services available around the clock, every day of the year. We never close our doors.' },
   ]
 
   return (

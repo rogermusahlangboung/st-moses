@@ -1,26 +1,26 @@
 import { useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, Stethoscope, FlaskConical, HeartPulse, Scissors, Radio, Smile, Pill, Eye, Ambulance, Users, Baby, ScanLine, UserCheck } from 'lucide-react'
+import { ArrowLeft, ArrowRight, CheckCircle, Stethoscope, FlaskConical, HeartPulse, Scissors, Radio, Smile, Pill, Eye, Ambulance, Users, Baby, ScanLine, UserCheck } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
 const ALL_SERVICES = [
-  { icon: Stethoscope, title: 'Out-Patient Department (OPD)', text: 'Comprehensive outpatient care with expert physicians for diagnosis, treatment, and routine medical consultations.', image: '/opd.jpg' },
-  { icon: FlaskConical, title: 'Laboratory Services', text: 'Full-service diagnostic laboratory with modern equipment for blood tests, urine analysis, and clinical pathology.', image: '/lab.jpg' },
-  { icon: HeartPulse, title: 'Antenatal, Delivery & Postnatal Services', text: 'Complete maternal care from pregnancy through delivery and postpartum support in a safe, nurturing environment.', image: '/antenatal.jpg' },
-  { icon: Scissors, title: 'Surgical Operations', text: 'State-of-the-art surgical procedures performed by experienced surgeons in sterile, modern operating theatres.', image: '/surgical.jpg' },
-  { icon: Radio, title: 'Ultrasound Services', text: 'Advanced diagnostic ultrasound imaging for abdominal, obstetric, gynecological, and soft tissue examinations.', image: '/ultrasound.jpg' },
-  { icon: UserCheck, title: 'Gynaecological Clinic', text: 'Specialized women\'s health services including routine exams, screenings, and treatment of gynecological conditions.', image: '/gynaecology.jpg' },
-  { icon: Smile, title: 'Dental Clinic', text: 'Full-service dental care including cleanings, restorations, extractions, and oral health education.', image: '/dental.avif' },
-  { icon: Pill, title: 'Pharmacy', text: 'Well-stocked pharmacy providing prescribed medications, over-the-counter drugs, and professional pharmaceutical advice.', image: '/pharmacy.jpg' },
-  { icon: ScanLine, title: 'X-Ray Unit', text: 'Digital X-ray imaging for accurate diagnosis of fractures, chest conditions, and other internal structures.', image: '/xray.jpg' },
-  { icon: Eye, title: 'Eye Clinic', text: 'Complete vision care including eye exams, refraction, treatment of eye diseases, and optical services.', image: '/eye.jpg' },
-  { icon: Users, title: 'Family Planning', text: 'Confidential family planning services including counseling, contraception, and reproductive health education.', image: '/family-planning.webp' },
-  { icon: ScanLine, title: 'CT Scan', text: 'Computed tomography imaging for detailed cross-sectional views of the body for precise diagnosis.', image: '/ct-scan.jpg' },
-  { icon: Baby, title: 'Fertility Clinic', text: 'Specialized fertility assessments, treatments, and support for individuals and couples on their family-building journey.', image: '/fertility.jpg' },
-  { icon: Ambulance, title: 'Emergency Response', text: '24/7 emergency medical services with rapid response, triage, stabilization, and critical care when every minute counts.', image: '/emergency.png' },
+  { icon: Stethoscope, title: 'Out-Patient Department (OPD)', text: 'Comprehensive outpatient care with expert physicians for diagnosis, treatment, and routine medical consultations.', image: '/opd.jpg', bullets: ['Routine check-ups and chronic disease management', 'Health screenings and vaccinations', 'Referrals to specialist departments as needed'] },
+  { icon: FlaskConical, title: 'Laboratory Services', text: 'Full-service diagnostic laboratory with modern equipment for blood tests, urine analysis, and clinical pathology.', image: '/lab.jpg', bullets: ['Clinical chemistry and hematology panels', 'Microbiology and parasitology testing', 'Rapid test results with digital reporting'] },
+  { icon: HeartPulse, title: 'Antenatal, Delivery & Postnatal Services', text: 'Complete maternal care from pregnancy through delivery and postpartum support in a safe, nurturing environment.', image: '/antenatal.jpg', bullets: ['Regular prenatal check-ups and ultrasound monitoring', 'Skilled delivery attendance and emergency obstetric care', 'Newborn care, immunization, and breastfeeding support'] },
+  { icon: Scissors, title: 'Surgical Operations', text: 'State-of-the-art surgical procedures performed by experienced surgeons in sterile, modern operating theatres.', image: '/surgical.jpg', bullets: ['General and minor surgical procedures', 'Pre-operative assessment and post-operative care', 'Sterile theatre environment with modern equipment'] },
+  { icon: Radio, title: 'Ultrasound Services', text: 'Advanced diagnostic ultrasound imaging for abdominal, obstetric, gynecological, and soft tissue examinations.', image: '/ultrasound.jpg', bullets: ['Obstetric scans for pregnancy monitoring', 'Abdominal and pelvic ultrasound imaging', 'Soft tissue and vascular assessments'] },
+  { icon: UserCheck, title: 'Gynaecological Clinic', text: 'Specialized women\'s health services including routine exams, screenings, and treatment of gynecological conditions.', image: '/gynaecology.jpg', bullets: ['Well-woman exams and cervical cancer screening', 'Menstrual disorder evaluation and treatment', 'Menopause management and counseling'] },
+  { icon: Smile, title: 'Dental Clinic', text: 'Full-service dental care including cleanings, restorations, extractions, and oral health education.', image: '/dental.avif', bullets: ['Routine dental cleanings and examinations', 'Fillings, extractions, and restorations', 'Oral health education and preventive care'] },
+  { icon: Pill, title: 'Pharmacy', text: 'Well-stocked pharmacy providing prescribed medications, over-the-counter drugs, and professional pharmaceutical advice.', image: '/pharmacy.jpg', bullets: ['Wide range of prescription and OTC medications', 'Professional medication counseling', 'Reliable supply chain with quality-assured products'] },
+  { icon: ScanLine, title: 'X-Ray Unit', text: 'Digital X-ray imaging for accurate diagnosis of fractures, chest conditions, and other internal structures.', image: '/xray.jpg', bullets: ['Chest and skeletal X-ray imaging', 'Abdominal and sinus X-ray examinations', 'Digital results with quick turnaround'] },
+  { icon: Eye, title: 'Eye Clinic', text: 'Complete vision care including eye exams, refraction, treatment of eye diseases, and optical services.', image: '/eye.jpg', bullets: ['Comprehensive eye examinations and refraction', 'Glaucoma and cataract screening', 'Treatment of eye infections and injuries'] },
+  { icon: Users, title: 'Family Planning', text: 'Confidential family planning services including counseling, contraception, and reproductive health education.', image: '/family-planning.webp', bullets: ['Contraceptive counseling and provision', 'Fertility awareness and reproductive health education', 'Confidential and non-judgmental consultations'] },
+  { icon: ScanLine, title: 'CT Scan', text: 'Computed tomography imaging for detailed cross-sectional views of the body for precise diagnosis.', image: '/ct-scan.jpg', bullets: ['Head, chest, abdominal and pelvic CT scans', 'Contrast-enhanced imaging when clinically indicated', 'Advanced multi-slice scanner for detailed results'] },
+  { icon: Baby, title: 'Fertility Clinic', text: 'Specialized fertility assessments, treatments, and support for individuals and couples on their family-building journey.', image: '/fertility.jpg', bullets: ['Fertility assessment and diagnostic testing', 'Ovulation monitoring and cycle tracking', 'Counselling and treatment planning'] },
+  { icon: Ambulance, title: 'Emergency Response', text: '24/7 emergency medical services with rapid response, triage, stabilization, and critical care when every minute counts.', image: '/emergency.png', bullets: ['24-hour emergency reception and triage', 'Accident and injury management', 'Stabilization and referral coordination'] },
 ]
 
 export default function Services() {
@@ -102,6 +102,16 @@ export default function Services() {
                     <p className="text-muted text-sm sm:text-base lg:text-lg leading-relaxed max-w-lg">
                       {svc.text}
                     </p>
+                    {svc.bullets && (
+                      <ul className="mt-4 space-y-2">
+                        {svc.bullets.map((b, bi) => (
+                          <li key={bi} className="flex items-start gap-2 text-muted text-sm sm:text-sm">
+                            <CheckCircle className="h-4 w-4 text-primary shrink-0 mt-0.5" strokeWidth={2} />
+                            <span>{b}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
 
                   <div className="lg:col-span-2 relative overflow-hidden min-h-[180px] sm:min-h-[220px] lg:min-h-full bg-primary">

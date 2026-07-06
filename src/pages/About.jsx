@@ -92,6 +92,27 @@ export default function About() {
         </h1>
       </div>
 
+      <section className="py-12 sm:py-16 px-6 sm:px-10 bg-surface border-y border-divider">
+        <div className="max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-center">
+            <div>
+              <span className="section-label">Our Story</span>
+              <h2 className="font-sans font-semibold text-2xl sm:text-3xl lg:text-4xl text-ink mt-3 leading-[1.1] tracking-tight">
+                Serving Pokuasi with compassion since 2009.
+              </h2>
+            </div>
+            <div className="space-y-4">
+              <p className="text-muted text-sm sm:text-base leading-relaxed">
+                St Moses Hospital was founded on a simple belief: that everyone deserves access to quality healthcare regardless of their circumstances. Located off the Nsawam-Accra Road opposite Fraga Oil in Pokuasi, we have grown from a small clinic into a fully licensed private hospital serving thousands of patients each year.
+              </p>
+              <p className="text-muted text-sm sm:text-base leading-relaxed">
+                Over the past 15 years, we have built a reputation for compassionate, professional care. Our team of dedicated doctors, nurses, and support staff work around the clock to ensure every patient receives the attention and treatment they deserve. From routine check-ups to emergency interventions, we are here for our community every step of the way.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section ref={featuresRef} className="py-8 sm:py-12 px-6 sm:px-10">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-divider rounded-2xl overflow-hidden border border-divider">
@@ -111,6 +132,10 @@ export default function About() {
           <div className="text-center mb-16">
             <span className="section-label">Our Identity</span>
           </div>
+
+          <p className="text-muted text-sm sm:text-base leading-relaxed mb-12 max-w-2xl mx-auto">
+            Our identity is rooted in our Christian heritage and a steadfast commitment to clinical excellence. These principles guide every decision we make and every patient we serve.
+          </p>
 
           <div className="mb-16">
             <h2 className="font-sans font-semibold text-2xl sm:text-3xl text-primary mb-4 tracking-tight">VISION</h2>
