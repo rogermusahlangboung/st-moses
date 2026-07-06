@@ -133,12 +133,12 @@ function Hero() {
         ))}
       </div>
 
-      <div className="relative z-10 flex min-h-[100dvh] flex-col items-center justify-center text-center px-6">
+      <div className="relative z-10 flex min-h-[100dvh] flex-col items-center justify-center text-center px-4 sm:px-6">
         <div className="max-w-3xl">
           <span className="hero-fade font-mono text-[11px] uppercase tracking-[0.25em] text-white/40 mb-6 block">St Moses Hospital, Pokuasi</span>
           <h1 className="hero-fade font-sans font-semibold text-white leading-[0.95] tracking-tight">
-            <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl">Your health,</span>
-            <span className="block text-5xl sm:text-6xl md:text-7xl lg:text-8xl mt-2">our commitment.</span>
+            <span className="block text-[2.5rem] sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05]">Your health,</span>
+            <span className="block text-[2.5rem] sm:text-6xl md:text-7xl lg:text-8xl mt-1 sm:mt-2">our commitment.</span>
           </h1>
           <p className="hero-fade text-white/50 text-base sm:text-lg mt-8 max-w-xl mx-auto leading-relaxed">
             15 years of compassionate healthcare in Pokuasi. General OPD, Maternity, Eye Clinic, Dental, Dietician. All under one roof.
@@ -265,7 +265,7 @@ function Pillars() {
           {pillars.map((p, i) => (
             <div key={i} style={{ transitionDelay: visible ? `${i * 120}ms` : '0ms' }} className={`bg-primary/50 p-8 sm:p-10 transition-all duration-1000 ease-out ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
               <div className="flex items-baseline gap-1 leading-none mb-4">
-                <span className="font-sans font-bold text-[7rem] sm:text-[8rem] leading-[0.85] text-white tabular-nums tracking-tight">
+                <span className="font-sans font-bold text-[7rem] sm:text-[8rem] md:text-[5rem] lg:text-[8rem] leading-[0.85] text-white tabular-nums tracking-tight">
                   <CountUp target={p.target} duration={1800 + i * 200} />
                 </span>
                 <span className="font-sans font-semibold text-3xl sm:text-4xl text-primary">{p.suffix}</span>
@@ -316,7 +316,7 @@ function Protocol() {
   ]
 
   return (
-    <section ref={containerRef} className="relative px-2 sm:px-6 py-10 sm:py-20 bg-background">
+    <section ref={containerRef} className="relative px-4 sm:px-6 py-10 sm:py-20 bg-background">
       <div className="max-w-7xl mx-auto mb-8 sm:mb-16 px-2 sm:px-10">
         <span className="section-label">How We Care</span>
         <h2 className="section-title mt-4">Three steps. <span className="text-primary">Complete care.</span></h2>
@@ -511,7 +511,7 @@ function Footer() {
           <div className="bg-white rounded-xl p-2 inline-flex items-center justify-center">
             <img src="/logo.png" alt="St Moses Hospital" className="h-11 w-auto" />
           </div>
-          <div className="flex items-center gap-6">
+          <div className="grid grid-cols-3 sm:flex sm:items-center gap-x-5 gap-y-2">
             <a href="#home" className="font-sans text-xs uppercase tracking-[0.1em] text-white/40 hover:text-white transition-colors">Home</a>
             <Link to="/about" className="font-sans text-xs uppercase tracking-[0.1em] text-white/40 hover:text-white transition-colors">About</Link>
             <Link to="/services" className="font-sans text-xs uppercase tracking-[0.1em] text-white/40 hover:text-white transition-colors">Services</Link>
@@ -522,10 +522,10 @@ function Footer() {
         <div className="h-px bg-white/5 mb-8" />
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs">
           <p>© 2026 St Moses Hospital. All rights reserved.</p>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
             <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
-            <span>Off Nsawam-Accra Rd, Opp Fraga Oil, Pokuasi</span>
+            <span className="w-full sm:w-auto text-white/30">Off Nsawam-Accra Rd, Opp Fraga Oil, Pokuasi</span>
           </div>
         </div>
       </div>

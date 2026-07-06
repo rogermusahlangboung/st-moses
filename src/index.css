@@ -10,11 +10,11 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 bg-primary text-white font-medium px-7 py-3.5 rounded-full transition-all duration-300;
+    @apply inline-flex items-center justify-center gap-2 bg-primary text-white font-medium px-7 py-4 rounded-full min-h-[44px] transition-all duration-300;
   }
   .btn-primary:hover { @apply bg-primary; }
   .btn-outline {
-    @apply inline-flex items-center justify-center gap-2 border border-white/30 text-white font-medium px-7 py-3.5 rounded-full transition-all duration-300;
+    @apply inline-flex items-center justify-center gap-2 border border-white/30 text-white font-medium px-7 py-4 rounded-full min-h-[44px] transition-all duration-300;
   }
   .btn-outline:hover { @apply border-white bg-white/10; }
   .section-label {

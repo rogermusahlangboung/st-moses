@@ -170,7 +170,7 @@ export default function About() {
             {PILLARS.map((p, i) => (
               <div key={i} style={{ transitionDelay: visible ? `${i * 120}ms` : '0ms' }} className={`bg-primary/50 p-8 sm:p-10 transition-all duration-1000 ease-out ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
                 <div className="flex items-baseline gap-1 leading-none mb-4">
-                  <span className="font-sans font-bold text-[7rem] sm:text-[8rem] leading-[0.85] text-white tabular-nums tracking-tight">
+                  <span className="font-sans font-bold text-[7rem] sm:text-[8rem] md:text-[5rem] lg:text-[8rem] leading-[0.85] text-white tabular-nums tracking-tight">
                     <CountUp target={p.target} duration={1800 + i * 200} />
                   </span>
                   <span className="font-sans font-semibold text-3xl sm:text-4xl text-primary-dark">{p.suffix}</span>

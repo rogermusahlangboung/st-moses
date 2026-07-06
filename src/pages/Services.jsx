@@ -69,7 +69,7 @@ export default function Services() {
         </div>
       </div>
 
-      <section ref={containerRef} className="relative px-2 sm:px-6 py-4 sm:py-8">
+      <section ref={containerRef} className="relative px-4 sm:px-6 py-4 sm:py-8">
         <div className="space-y-6 sm:space-y-8 pb-24 sm:pb-32">
           {ALL_SERVICES.map((svc, idx) => {
             const Icon = svc.icon
