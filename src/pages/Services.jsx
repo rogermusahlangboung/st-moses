@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useLayoutEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowLeft, ArrowRight, CheckCircle, Stethoscope, FlaskConical, HeartPulse, Scissors, Radio, Smile, Pill, Eye, Ambulance, Users, Baby, ScanLine, UserCheck } from 'lucide-react'
 import { gsap } from 'gsap'
@@ -26,21 +26,27 @@ const ALL_SERVICES = [
 export default function Services() {
   const containerRef = useRef(null)
 
-  useEffect(() => {
-    window.scrollTo(0, 0)
+  useLayoutEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    const motion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray('.svc-sticky-card')
+      const frames = gsap.utils.toArray('.svc-card-frame')
+
+      if (motion) return
+
       cards.forEach((card, i) => {
         if (i === cards.length - 1) return
-        gsap.fromTo(card,
+        gsap.fromTo(frames[i],
           { filter: 'blur(0px) saturate(1)', opacity: 1, scale: 1 },
           {
             scrollTrigger: {
               trigger: card,
               start: 'top top+=80',
-              endTrigger: cards[cards.length - 1],
-              end: 'top top+=100',
-              scrub: 0.5,
+              endTrigger: cards[i + 1],
+              end: 'top top+=80',
+              scrub: 0.35,
+              invalidateOnRefresh: true,
             },
             filter: 'blur(6px) saturate(0.7)',
             opacity: 0.5,
@@ -50,7 +56,15 @@ export default function Services() {
         )
       })
     }, containerRef)
-    return () => ctx.revert()
+
+    const refresh = () => ScrollTrigger.refresh()
+    requestAnimationFrame(refresh)
+    window.addEventListener('load', refresh)
+
+    return () => {
+      window.removeEventListener('load', refresh)
+      ctx.revert()
+    }
   }, [])
 
   return (
@@ -77,9 +91,11 @@ export default function Services() {
               <article
                 key={idx}
                 className="svc-sticky-card sticky top-14 sm:top-20 lg:top-28 mx-auto max-w-6xl bg-surface border border-divider rounded-2xl overflow-hidden shadow-sm"
-                style={{ willChange: 'transform, filter, opacity', backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
               >
-                <div className="grid lg:grid-cols-5 gap-0 min-h-[40vh] sm:min-h-[50vh] lg:min-h-[65vh]">
+                <div
+                  className="svc-card-frame grid lg:grid-cols-5 gap-0 min-h-[40vh] sm:min-h-[50vh] lg:min-h-[65vh]"
+                  style={{ willChange: 'transform, filter, opacity', backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}
+                >
                   <div className="lg:col-span-3 p-6 sm:p-8 lg:p-14 flex flex-col justify-between">
                     <div className="flex items-center justify-between">
                       <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
