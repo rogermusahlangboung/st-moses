@@ -74,16 +74,16 @@ function Navbar() {
         <div className={`absolute top-0 left-0 right-0 bg-primary px-6 pt-6 pb-12 transition-transform duration-500 ${open ? 'translate-y-0' : '-translate-y-full'}`}>
           <div className="flex items-center justify-between mb-10">
             <img src="/logo.png" alt="St Moses Hospital" className="h-12 w-auto" />
-            <button onClick={() => setOpen(false)} className="p-2 rounded-full bg-white/10"><X className="h-5 w-5 text-white" /></button>
+            <button onClick={() => setOpen(false)} className="p-2 border border-white/15 bg-white/10"><X className="h-5 w-5 text-white" /></button>
           </div>
           <div className="flex flex-col gap-1">
             {NAV_LINKS.map((link) =>
               link.external ? (
-                <Link key={link.href} to={link.href} onClick={() => setOpen(false)} className="font-sans text-3xl font-semibold text-white py-3 border-b border-white/10">
+                <Link key={link.href} to={link.href} onClick={() => setOpen(false)} className="font-sans text-3xl font-medium text-white py-3 border-b border-white/10">
                   {link.label}
                 </Link>
               ) : (
-                <a key={link.href} href={link.href} onClick={() => setOpen(false)} className="font-sans text-3xl font-semibold text-white py-3 border-b border-white/10">
+                <a key={link.href} href={link.href} onClick={() => setOpen(false)} className="font-sans text-3xl font-medium text-white py-3 border-b border-white/10">
                   {link.label}
                 </a>
               )
@@ -153,24 +153,24 @@ function Hero() {
       </div>
 
       <div className="relative z-30 flex min-h-[100dvh] flex-col items-center justify-center text-center px-4 sm:px-6">
-        <div className="max-w-3xl">
-          <span className="hero-fade font-mono text-[11px] uppercase tracking-[0.25em] text-white/40 mb-6 block">St Moses Hospital, Pokuasi</span>
-          <h1 className="hero-fade font-sans font-semibold text-white leading-[0.95] tracking-tight">
-            <span className="block text-[2.5rem] sm:text-6xl md:text-7xl lg:text-8xl leading-[1.05]">Your health,</span>
-            <span className="block text-[2.5rem] sm:text-6xl md:text-7xl lg:text-8xl mt-1 sm:mt-2">our commitment.</span>
+        <div className="max-w-4xl">
+          <span className="hero-fade mb-5 block text-[12px] font-medium uppercase tracking-[0.16em] text-white/65">St Moses Hospital, Pokuasi</span>
+          <h1 className="hero-fade font-sans text-white">
+            <span className="block text-[2.65rem] font-medium leading-[1.02] sm:text-6xl md:text-7xl lg:text-[5.25rem]">Your health,</span>
+            <span className="mt-1 block text-[2.65rem] font-medium leading-[1.02] sm:text-6xl md:text-7xl lg:text-[5.25rem]">our commitment.</span>
           </h1>
-          <p className="hero-fade text-white/50 text-base sm:text-lg mt-8 max-w-xl mx-auto leading-relaxed">
+          <p className="hero-fade mx-auto mt-7 max-w-2xl text-base leading-relaxed text-white/70 sm:text-lg">
             23 years of compassionate healthcare in Pokuasi. General OPD, Maternity, Eye Clinic, Dental, Dietician. All under one roof.
           </p>
-          <div className="hero-fade mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <Link to="/appointment" className="btn-primary bg-white text-ink hover:bg-white/90 px-8 py-4 text-sm">Book Appointment <ArrowRight className="h-4 w-4" /></Link>
-            <a href="tel:0243474002" className="btn-outline text-sm px-8 py-4">0243-474002</a>
+          <div className="hero-fade mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+            <Link to="/appointment" className="btn-primary bg-white px-8 py-3.5 text-sm text-ink hover:bg-white/90">Book Appointment <ArrowRight className="h-4 w-4" /></Link>
+            <a href="tel:0243474002" className="btn-outline px-8 py-3.5 text-sm">0243-474002</a>
           </div>
         </div>
 
-        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <span className="font-mono text-[9px] uppercase tracking-[0.3em] text-white/25">Scroll</span>
-          <div className="h-6 w-px bg-white/15" />
+        <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2">
+          <span className="text-[10px] uppercase tracking-[0.18em] text-white/40">Scroll</span>
+          <div className="h-6 w-px bg-white/20" />
         </div>
       </div>
     </section>
@@ -194,19 +194,19 @@ function Features() {
   ]
 
   return (
-    <section ref={sectionRef} className="py-24 sm:py-32 px-6 sm:px-10">
-      <div className="max-w-7xl mx-auto">
-        <div className="feature-fade max-w-2xl mb-16">
+    <section ref={sectionRef} className="bg-white px-6 py-20 sm:px-10 sm:py-28">
+      <div className="mx-auto max-w-7xl">
+        <div className="feature-fade mb-12 max-w-3xl">
           <span className="section-label">About St Moses</span>
-          <h2 className="section-title mt-4">Quality healthcare for <span className="text-primary">everyone.</span></h2>
+          <h2 className="section-title mt-3">Quality healthcare for everyone.</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-divider rounded-2xl overflow-hidden border border-divider">
+        <div className="grid grid-cols-1 border-y border-black/10 md:grid-cols-3">
           {cards.map((c, i) => (
-            <div key={i} className="feature-fade bg-surface p-8 sm:p-10">
-              <c.icon className="h-6 w-6 text-primary mb-5" strokeWidth={1.8} />
-              <h3 className="font-sans font-semibold text-lg text-ink mb-2">{c.title}</h3>
-              <p className="text-muted text-sm leading-relaxed">{c.text}</p>
+            <div key={i} className={`feature-fade px-0 py-9 md:px-8 ${i > 0 ? 'border-t border-black/10 md:border-l md:border-t-0' : ''}`}>
+              <c.icon className="mb-5 h-6 w-6 text-primary" strokeWidth={1.7} />
+              <h3 className="mb-3 font-sans text-xl font-medium text-ink">{c.title}</h3>
+              <p className="max-w-sm text-sm leading-7 text-muted">{c.text}</p>
             </div>
           ))}
         </div>
@@ -268,22 +268,22 @@ function Pillars() {
   ]
 
   return (
-    <section id="about" ref={ref} className="py-24 sm:py-32 px-6 sm:px-10 bg-primary text-white overflow-hidden">
-      <div className="max-w-7xl mx-auto">
-        <div className={`flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 transition-all duration-1000 ease-out ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
+    <section id="about" ref={ref} className="overflow-hidden bg-primary px-6 py-20 text-white sm:px-10 sm:py-28">
+      <div className="mx-auto max-w-7xl">
+        <div className={`mb-12 flex flex-col justify-between gap-8 transition-all duration-1000 ease-out lg:flex-row lg:items-end ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}`}>
           <div className="max-w-2xl">
-            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/50">Our commitment</span>
-            <h2 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-semibold mt-4 leading-tight">Healthcare built on trust.</h2>
+            <span className="text-[12px] font-medium uppercase tracking-[0.16em] text-white/60">Our commitment</span>
+            <h2 className="mt-3 font-sans text-3xl font-medium leading-[1.08] sm:text-4xl lg:text-5xl">Healthcare built on trust.</h2>
           </div>
-          <p className="max-w-md text-white/60 text-sm leading-relaxed">Every number represents a person, a family, and a story of care. We remain committed to delivering dependable healthcare with compassion and excellence.</p>
+          <p className="max-w-md text-sm leading-7 text-white/65">Every number represents a person, a family, and a story of care. We remain committed to delivering dependable healthcare with compassion and excellence.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 border-t border-white/15">
+        <div className="grid grid-cols-1 border-y border-white/20 md:grid-cols-3">
           {pillars.map((p, i) => (
-            <div key={p.label} className={`py-10 md:px-8 ${i > 0 ? 'border-t md:border-t-0 md:border-l border-white/15' : ''}`}>
-              <div className="font-sans text-5xl sm:text-6xl font-semibold tracking-tight"><CountUp target={p.target} />{p.suffix}</div>
-              <div className="mt-3 text-base font-semibold">{p.label}</div>
-              <p className="mt-3 text-sm leading-relaxed text-white/55">{p.desc}</p>
+            <div key={p.label} className={`py-9 md:px-8 ${i > 0 ? 'border-t border-white/20 md:border-l md:border-t-0' : ''}`}>
+              <div className="font-sans text-5xl font-medium tracking-tight sm:text-6xl"><CountUp target={p.target} />{p.suffix}</div>
+              <div className="mt-3 text-base font-medium">{p.label}</div>
+              <p className="mt-3 max-w-sm text-sm leading-7 text-white/60">{p.desc}</p>
             </div>
           ))}
         </div>
@@ -303,24 +303,24 @@ function Services() {
   }, [])
 
   return (
-    <section id="services" ref={ref} className="py-24 sm:py-32 px-6 sm:px-10 bg-background">
-      <div className="max-w-7xl mx-auto">
-        <div className="service-fade flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
+    <section id="services" ref={ref} className="bg-background px-6 py-20 sm:px-10 sm:py-28">
+      <div className="mx-auto max-w-7xl">
+        <div className="service-fade mb-12 flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
           <div>
             <span className="section-label">Our services</span>
-            <h2 className="section-title mt-4">Complete care, <span className="text-primary">close to home.</span></h2>
+            <h2 className="section-title mt-3">Complete care, close to home.</h2>
           </div>
-          <Link to="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-primary">View all services <ArrowUpRight className="h-4 w-4" /></Link>
+          <Link to="/services" className="inline-flex items-center gap-2 text-sm font-medium text-primary">View all services <ArrowUpRight className="h-4 w-4" /></Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 gap-px bg-black/10 sm:grid-cols-2 lg:grid-cols-3">
           {SERVICES_FULL.map((s) => (
-            <div key={s.title} className="service-fade group rounded-2xl border border-divider bg-surface p-7 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
-              <div className="h-11 w-11 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-                <s.icon className="h-5 w-5 text-primary" strokeWidth={1.8} />
+            <div key={s.title} className="service-fade group bg-white p-7 transition-colors duration-300 hover:bg-[#f0f0f0] sm:p-8">
+              <div className="tesla-icon mb-6">
+                <s.icon className="h-5 w-5" strokeWidth={1.7} />
               </div>
-              <h3 className="font-sans font-semibold text-xl text-ink">{s.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{s.text}</p>
+              <h3 className="font-sans text-xl font-medium text-ink">{s.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-muted">{s.text}</p>
             </div>
           ))}
         </div>
@@ -337,18 +337,18 @@ function Trust() {
   ]
 
   return (
-    <section className="py-24 sm:py-32 px-6 sm:px-10">
-      <div className="max-w-7xl mx-auto">
-        <div className="max-w-2xl mb-14">
+    <section className="bg-white px-6 py-20 sm:px-10 sm:py-28">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-12 max-w-3xl">
           <span className="section-label">Why choose us</span>
-          <h2 className="section-title mt-4">Care you can <span className="text-primary">depend on.</span></h2>
+          <h2 className="section-title mt-3">Care you can depend on.</h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {items.map((item) => (
-            <div key={item.title} className="rounded-2xl border border-divider bg-surface p-8">
-              <item.icon className="h-6 w-6 text-primary" strokeWidth={1.8} />
-              <h3 className="mt-5 font-sans text-lg font-semibold text-ink">{item.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted">{item.text}</p>
+        <div className="grid grid-cols-1 border-y border-black/10 md:grid-cols-3">
+          {items.map((item, i) => (
+            <div key={item.title} className={`py-9 md:px-8 ${i > 0 ? 'border-t border-black/10 md:border-l md:border-t-0' : ''}`}>
+              <item.icon className="h-6 w-6 text-primary" strokeWidth={1.7} />
+              <h3 className="mt-5 font-sans text-xl font-medium text-ink">{item.title}</h3>
+              <p className="mt-3 text-sm leading-7 text-muted">{item.text}</p>
             </div>
           ))}
         </div>
@@ -365,23 +365,21 @@ function Diagnostics() {
   ]
 
   return (
-    <section className="bg-deep px-6 py-24 text-white sm:px-10 sm:py-32">
+    <section className="bg-deep px-6 py-20 text-white sm:px-10 sm:py-28">
       <div className="mx-auto max-w-7xl">
-        <div className="grid items-center gap-14 lg:grid-cols-2">
+        <div className="grid items-start gap-14 lg:grid-cols-2">
           <div>
-            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/45">Modern diagnostics</span>
-            <h2 className="mt-4 font-sans text-4xl font-semibold leading-tight sm:text-5xl">Clear answers. Better decisions.</h2>
-            <p className="mt-6 max-w-xl text-sm leading-relaxed text-white/60 sm:text-base">Our diagnostic services support faster, more accurate clinical decisions so patients receive the right care without unnecessary delay.</p>
+            <span className="text-[12px] font-medium uppercase tracking-[0.16em] text-white/55">Modern diagnostics</span>
+            <h2 className="mt-3 font-sans text-3xl font-medium leading-[1.08] sm:text-4xl lg:text-5xl">Clear answers. Better decisions.</h2>
+            <p className="mt-5 max-w-xl text-sm leading-7 text-white/65 sm:text-base">Our diagnostic services support faster, more accurate clinical decisions so patients receive the right care without unnecessary delay.</p>
           </div>
-          <div className="grid gap-4">
-            {diagnostics.map((item) => (
-              <div key={item.title} className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 sm:p-7">
-                <div className="flex gap-4">
-                  <div className="mt-1 h-10 w-10 shrink-0 rounded-xl bg-white/10 flex items-center justify-center"><item.icon className="h-5 w-5" /></div>
-                  <div>
-                    <h3 className="font-sans text-lg font-semibold">{item.title}</h3>
-                    <p className="mt-2 text-sm leading-relaxed text-white/55">{item.text}</p>
-                  </div>
+          <div className="border-y border-white/15">
+            {diagnostics.map((item, i) => (
+              <div key={item.title} className={`flex gap-4 py-7 ${i > 0 ? 'border-t border-white/15' : ''}`}>
+                <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center border border-white/20"><item.icon className="h-5 w-5" /></div>
+                <div>
+                  <h3 className="font-sans text-lg font-medium">{item.title}</h3>
+                  <p className="mt-2 text-sm leading-7 text-white/60">{item.text}</p>
                 </div>
               </div>
             ))}
@@ -394,14 +392,14 @@ function Diagnostics() {
 
 function CTA() {
   return (
-    <section className="px-6 py-24 sm:px-10 sm:py-32">
-      <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-primary px-6 py-14 text-center text-white sm:px-12 sm:py-20">
-        <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/50">We are here for you</span>
-        <h2 className="mx-auto mt-5 max-w-3xl font-sans text-4xl font-semibold leading-tight sm:text-5xl">Professional healthcare, whenever you need it.</h2>
-        <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-white/60 sm:text-base">Book a consultation or speak with our team for guidance on the right service for you and your family.</p>
-        <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
-          <Link to="/appointment" className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-7 py-4 text-sm font-semibold text-primary">Book Appointment <ArrowUpRight className="h-4 w-4" /></Link>
-          <a href="tel:0243474002" className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 px-7 py-4 text-sm font-semibold text-white"><Phone className="h-4 w-4" /> Call 0243-474002</a>
+    <section className="bg-white px-6 py-20 sm:px-10 sm:py-28">
+      <div className="mx-auto max-w-7xl border-y border-black/10 py-14 text-center sm:py-18">
+        <span className="section-label">We are here for you</span>
+        <h2 className="mx-auto mt-3 max-w-3xl font-sans text-3xl font-medium leading-[1.08] text-ink sm:text-4xl lg:text-5xl">Professional healthcare, whenever you need it.</h2>
+        <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-muted sm:text-base">Book a consultation or speak with our team for guidance on the right service for you and your family.</p>
+        <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+          <Link to="/appointment" className="btn-primary px-7 py-3.5 text-sm">Book Appointment <ArrowUpRight className="h-4 w-4" /></Link>
+          <a href="tel:0243474002" className="inline-flex min-h-[44px] items-center justify-center gap-2 border border-black/15 px-7 py-3.5 text-sm font-medium text-ink transition-colors hover:bg-black/5"><Phone className="h-4 w-4" /> Call 0243-474002</a>
         </div>
       </div>
     </section>
