@@ -27,3 +27,29 @@
     @apply font-sans text-[13px] font-medium uppercase tracking-[0.08em] transition-colors duration-300;
   }
 }
+
+/* More visible cinematic zoom for the homepage hero carousel. */
+#home > .absolute.inset-0 > img {
+  transition-property: opacity, transform, filter !important;
+  transition-duration: 2200ms !important;
+  transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1) !important;
+  transform-origin: center center;
+}
+
+#home > .absolute.inset-0 > img.opacity-0 {
+  transform: scale(0.9) !important;
+  filter: blur(2px);
+}
+
+#home > .absolute.inset-0 > img.opacity-100 {
+  transform: scale(1.12) !important;
+  filter: blur(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #home > .absolute.inset-0 > img {
+    transition-duration: 500ms !important;
+    transform: scale(1) !important;
+    filter: none !important;
+  }
+}
