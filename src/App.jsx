@@ -110,6 +110,7 @@ const HERO_SLIDES = [
 function Hero() {
   const heroRef = useRef(null)
   const [slide, setSlide] = useState(0)
+  const [previousSlide, setPreviousSlide] = useState(null)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -119,24 +120,39 @@ function Hero() {
   }, [])
 
   useEffect(() => {
-    const timer = setInterval(() => setSlide((p) => (p + 1) % HERO_SLIDES.length), 5000)
+    const timer = setInterval(() => {
+      setSlide((current) => {
+        setPreviousSlide(current)
+        return (current + 1) % HERO_SLIDES.length
+      })
+    }, 5000)
     return () => clearInterval(timer)
   }, [])
 
   return (
     <section id="home" ref={heroRef} className="relative min-h-[100dvh] w-full overflow-hidden bg-deep">
-      <div className="absolute inset-0">
-        {HERO_SLIDES.map((src, i) => (
-          <img
-            key={src}
-            src={src}
-            alt=""
-            className={`absolute inset-0 h-full w-full object-cover will-change-transform transition-[opacity,transform] duration-[1400ms] ease-out ${i === slide ? 'scale-105 opacity-100' : 'scale-100 opacity-0'}`}
-          />
-        ))}
+      <div className="absolute inset-0 overflow-hidden">
+        {HERO_SLIDES.map((src, i) => {
+          const isActive = i === slide
+          const isPrevious = i === previousSlide
+          const positionClass = isActive
+            ? 'translate-x-0 z-20'
+            : isPrevious
+              ? '-translate-x-full z-10'
+              : 'translate-x-full z-0'
+
+          return (
+            <img
+              key={src}
+              src={src}
+              alt=""
+              className={`absolute inset-0 h-full w-full object-cover will-change-transform transition-transform duration-[1200ms] ease-in-out motion-reduce:transition-none ${positionClass}`}
+            />
+          )
+        })}
       </div>
 
-      <div className="relative z-10 flex min-h-[100dvh] flex-col items-center justify-center text-center px-4 sm:px-6">
+      <div className="relative z-30 flex min-h-[100dvh] flex-col items-center justify-center text-center px-4 sm:px-6">
         <div className="max-w-3xl">
           <span className="hero-fade font-mono text-[11px] uppercase tracking-[0.25em] text-white/40 mb-6 block">St Moses Hospital, Pokuasi</span>
           <h1 className="hero-fade font-sans font-semibold text-white leading-[0.95] tracking-tight">
