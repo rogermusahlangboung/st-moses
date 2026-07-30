@@ -8,13 +8,23 @@ import Contact from './pages/Contact.jsx'
 import Appointment from './pages/Appointment.jsx'
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 import Terms from './pages/Terms.jsx'
+import ExtendedFooter from './components/ExtendedFooter.jsx'
 import './index.css'
+
+function HomePage() {
+  return (
+    <>
+      <App />
+      <ExtendedFooter />
+    </>
+  )
+}
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/services" element={<Services />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
