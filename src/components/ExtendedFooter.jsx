@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Send, Twitter } from 'lucide-react'
+import { Mail, MapPin, Phone, Send } from 'lucide-react'
 
 const COMPANY_LINKS = [
   ['About', '/about'],
@@ -21,6 +21,13 @@ const SERVICE_LINKS = [
   'CT Scan',
   'Dietitian and Dietetic',
   'Emergency Response',
+]
+
+const SOCIAL_LINKS = [
+  { label: 'Facebook', mark: 'f' },
+  { label: 'LinkedIn', mark: 'in' },
+  { label: 'Instagram', mark: 'ig' },
+  { label: 'Twitter', mark: 'x' },
 ]
 
 export default function ExtendedFooter() {
@@ -52,9 +59,9 @@ export default function ExtendedFooter() {
               St Moses Hospital provides compassionate, dependable healthcare for individuals and families in Pokuasi and surrounding communities. Your health remains our commitment.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              {[Facebook, Linkedin, Instagram, Twitter].map((Icon, index) => (
-                <a key={index} href="#" aria-label="Social media" className="h-11 w-11 rounded-xl border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:border-white/35 transition-colors">
-                  <Icon className="h-4 w-4" />
+              {SOCIAL_LINKS.map(({ label, mark }) => (
+                <a key={label} href="#" aria-label={label} className="h-11 w-11 rounded-xl border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:border-white/35 transition-colors">
+                  <span className="text-xs font-semibold uppercase tracking-tight">{mark}</span>
                 </a>
               ))}
             </div>
