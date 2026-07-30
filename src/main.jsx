@@ -8,6 +8,7 @@ import Contact from './pages/Contact.jsx'
 import Appointment from './pages/Appointment.jsx'
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 import Terms from './pages/Terms.jsx'
+import Leadership from './pages/Leadership.jsx'
 import ExtendedFooter from './components/ExtendedFooter.jsx'
 import './index.css'
 
@@ -31,6 +32,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/appointment" element={<Appointment />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<Terms />} />
+        <Route path="/leadership" element={<Leadership />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
