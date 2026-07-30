@@ -14,6 +14,7 @@ const NAV_LINKS = [
   { label: 'Home', href: '#home', external: false },
   { label: 'About', href: '/about', external: true },
   { label: 'Services', href: '/services', external: true },
+  { label: 'Leadership', href: '/leadership', external: true },
   { label: 'Contact', href: '/contact', external: true },
 ]
 
@@ -126,8 +127,11 @@ function Hero() {
     <section id="home" ref={heroRef} className="relative min-h-[100dvh] w-full overflow-hidden bg-deep">
       <div className="absolute inset-0">
         {HERO_SLIDES.map((src, i) => (
-          <img key={src} src={src} alt=""
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${i === slide ? 'opacity-100' : 'opacity-0'}`}
+          <img
+            key={src}
+            src={src}
+            alt=""
+            className={`absolute inset-0 h-full w-full object-cover will-change-transform transition-[opacity,transform] duration-[1400ms] ease-out ${i === slide ? 'scale-105 opacity-100' : 'scale-100 opacity-0'}`}
           />
         ))}
       </div>
@@ -140,7 +144,7 @@ function Hero() {
             <span className="block text-[2.5rem] sm:text-6xl md:text-7xl lg:text-8xl mt-1 sm:mt-2">our commitment.</span>
           </h1>
           <p className="hero-fade text-white/50 text-base sm:text-lg mt-8 max-w-xl mx-auto leading-relaxed">
-            15 years of compassionate healthcare in Pokuasi. General OPD, Maternity, Eye Clinic, Dental, Dietician. All under one roof.
+            23 years of compassionate healthcare in Pokuasi. General OPD, Maternity, Eye Clinic, Dental, Dietician. All under one roof.
           </p>
           <div className="hero-fade mt-10 flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/appointment" className="btn-primary bg-white text-ink hover:bg-white/90 px-8 py-4 text-sm">Book Appointment <ArrowRight className="h-4 w-4" /></Link>
@@ -242,7 +246,7 @@ function Pillars() {
   }, [])
 
   const pillars = [
-    { target: 15, suffix: '+', label: 'Years of service', desc: 'A decade and a half of compassionate healthcare in the Pokuasi community. Thousands of patients served.' },
+    { target: 23, suffix: '+', label: 'Years of service', desc: 'More than two decades of compassionate healthcare in the Pokuasi community. Thousands of patients served.' },
     { target: 24, suffix: '/7', label: 'Emergency care', desc: 'Round-the-clock emergency services. Our doors are always open, every day of the year.' },
     { target: 100, suffix: '%', label: 'Dedicated to you', desc: 'Fully licensed and certified. We meet the highest standards of care, every single time.' },
   ]
@@ -252,25 +256,18 @@ function Pillars() {
       <div className="max-w-7xl mx-auto">
         <div className={`flex flex-col lg:flex-row lg:items-end justify-between gap-8 mb-16 transition-all duration-1000 ease-out ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
           <div className="max-w-2xl">
-            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">By the Numbers</span>
-            <h2 className="font-sans font-semibold text-4xl sm:text-5xl lg:text-6xl text-white mt-4 leading-[1.05] tracking-tight">
-              The numbers behind <span className="text-primary">the trust.</span>
-            </h2>
+            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/50">Our commitment</span>
+            <h2 className="font-sans text-4xl sm:text-5xl lg:text-6xl font-semibold mt-4 leading-tight">Healthcare built on trust.</h2>
           </div>
-          <p className="text-white/40 text-base max-w-md lg:text-right">Three numbers that define how we care. Not marketing. Just what we deliver, every time.</p>
+          <p className="max-w-md text-white/60 text-sm leading-relaxed">Every number represents a person, a family, and a story of care. We remain committed to delivering dependable healthcare with compassion and excellence.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10">
+        <div className="grid grid-cols-1 md:grid-cols-3 border-t border-white/15">
           {pillars.map((p, i) => (
-            <div key={i} style={{ transitionDelay: visible ? `${i * 120}ms` : '0ms' }} className={`bg-primary/50 p-8 sm:p-10 transition-all duration-1000 ease-out ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-              <div className="flex items-baseline gap-1 leading-none mb-4">
-                <span className="font-sans font-bold text-[7rem] sm:text-[8rem] md:text-[5rem] lg:text-[8rem] leading-[0.85] text-white tabular-nums tracking-tight">
-                  <CountUp target={p.target} duration={1800 + i * 200} />
-                </span>
-                <span className="font-sans font-semibold text-3xl sm:text-4xl text-primary">{p.suffix}</span>
-              </div>
-              <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/50 mb-4">{p.label}</p>
-              <p className="text-white/40 text-sm leading-relaxed max-w-xs">{p.desc}</p>
+            <div key={p.label} className={`py-10 md:px-8 ${i > 0 ? 'border-t md:border-t-0 md:border-l border-white/15' : ''}`}>
+              <div className="font-sans text-5xl sm:text-6xl font-semibold tracking-tight"><CountUp target={p.target} />{p.suffix}</div>
+              <div className="mt-3 text-base font-semibold">{p.label}</div>
+              <p className="mt-3 text-sm leading-relaxed text-white/55">{p.desc}</p>
             </div>
           ))}
         </div>
@@ -279,153 +276,35 @@ function Pillars() {
   )
 }
 
-function Protocol() {
-  const containerRef = useRef(null)
-
-  useEffect(() => {
-    const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray('.protocol-card')
-      cards.forEach((card, i) => {
-        if (i === cards.length - 1) return
-        gsap.fromTo(card,
-          { filter: 'blur(0px) saturate(1)', opacity: 1, scale: 1 },
-          {
-            scrollTrigger: {
-              trigger: card,
-              start: 'top top+=80',
-              endTrigger: cards[cards.length - 1],
-              end: 'top top+=100',
-              scrub: 0.5,
-            },
-            filter: 'blur(6px) saturate(0.7)',
-            opacity: 0.5,
-            scale: 0.92,
-            ease: 'none',
-          }
-        )
-      })
-    }, containerRef)
-    return () => ctx.revert()
-  }, [])
-
-  const steps = [
-    { num: '01', title: 'Consultation & Diagnosis', tagline: 'We listen first.', text: 'We take time to hear your concerns, review your medical history, and conduct a thorough physical assessment. Our doctors explain findings in plain language so you understand your health. No hidden fees, only transparent advice before we proceed.', image: '/gen-consult.jpg', alt: 'Doctor consulting with patient' },
-    { num: '02', title: 'Personalized Treatment', tagline: 'Carefully planned.', text: 'We design a treatment plan tailored to your specific health needs, lifestyle, and goals. Whether it is medication, therapy, or a procedure, we walk you through every option so you can make informed decisions about your care.', image: '/hero11.webp', alt: 'Medical team reviewing treatment plan' },
-    { num: '03', title: 'Care & Follow-up', tagline: 'We stay with you.', text: 'Our commitment does not end when you leave the consultation room. We provide ongoing support, schedule follow-up appointments, and monitor your progress to ensure you recover fully and stay healthy.', image: '/care-followup.webp', alt: 'Hospital exterior' },
-  ]
-
-  return (
-    <section ref={containerRef} className="relative px-4 sm:px-6 py-10 sm:py-20 bg-background">
-      <div className="max-w-7xl mx-auto mb-8 sm:mb-16 px-2 sm:px-10">
-        <span className="section-label">How We Care</span>
-        <h2 className="section-title mt-4">Three steps. <span className="text-primary">Complete care.</span></h2>
-      </div>
-
-      <div className="space-y-6 sm:space-y-8">
-        {steps.map((step, idx) => (
-          <article key={idx} className="protocol-card sticky top-14 sm:top-20 lg:top-28 mx-auto max-w-6xl bg-surface border border-divider rounded-2xl overflow-hidden shadow-sm"
-            style={{ willChange: 'transform, filter, opacity', backfaceVisibility: 'hidden', WebkitBackfaceVisibility: 'hidden' }}>
-            <div className="grid lg:grid-cols-5 gap-0 min-h-[45vh] sm:min-h-[55vh] lg:min-h-[70vh]">
-              <div className="lg:col-span-3 p-6 sm:p-8 lg:p-14 flex flex-col justify-between">
-                <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">{step.num} / {step.title}</span>
-                <div className="my-6 sm:my-12">
-                  <span className="font-sans font-bold text-[5rem] sm:text-[7rem] lg:text-[10rem] leading-none text-black/[0.04] -mb-4 block select-none">{step.num}</span>
-                  <h3 className="font-sans font-semibold text-2xl sm:text-4xl lg:text-5xl text-ink leading-[1.02] tracking-tight">{step.title}</h3>
-                  <p className="font-sans text-primary text-xl sm:text-2xl lg:text-3xl mt-2 sm:mt-3 font-medium">{step.tagline}</p>
-                </div>
-                <p className="text-muted text-sm sm:text-base lg:text-lg leading-relaxed max-w-lg">{step.text}</p>
-              </div>
-              <div className="lg:col-span-2 relative overflow-hidden min-h-[180px] sm:min-h-[250px] lg:min-h-full bg-primary">
-                <img src={step.image} alt={step.alt} loading="lazy" className="absolute inset-0 w-full h-full object-cover" style={{ filter: 'brightness(0.65)' }} />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/40 via-transparent to-primary/10" />
-              </div>
-            </div>
-          </article>
-        ))}
-      </div>
-    </section>
-  )
-}
-
-function ServicesGrid() {
+function Services() {
   const ref = useRef(null)
+
   useEffect(() => {
     const ctx = gsap.context(() => {
-      gsap.from('.svc-tile', { scrollTrigger: { trigger: ref.current, start: 'top 90%', once: true }, y: 20, opacity: 0, duration: 0.5, ease: 'power2.out', stagger: 0.05 })
+      gsap.from('.service-fade', { scrollTrigger: { trigger: ref.current, start: 'top 80%', once: true }, y: 20, opacity: 0, duration: 0.55, ease: 'power2.out', stagger: 0.08 })
     }, ref)
     return () => ctx.revert()
   }, [])
 
   return (
-    <section id="services" ref={ref} className="py-24 sm:py-32 px-6 sm:px-10 bg-primary text-white">
+    <section id="services" ref={ref} className="py-24 sm:py-32 px-6 sm:px-10 bg-background">
       <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-6 mb-14">
+        <div className="service-fade flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-14">
           <div>
-            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/40">Everything We Do</span>
-            <h2 className="font-sans font-semibold text-4xl sm:text-5xl lg:text-6xl mt-4 leading-[1.05] tracking-tight">Complete care, <span className="text-primary">under one roof.</span></h2>
+            <span className="section-label">Our services</span>
+            <h2 className="section-title mt-4">Complete care, <span className="text-primary">close to home.</span></h2>
           </div>
-          <p className="text-white/40 max-w-md text-sm leading-relaxed">We provide a full range of medical services for patients of all ages. From routine checkups to specialist care.</p>
+          <Link to="/services" className="inline-flex items-center gap-2 text-sm font-semibold text-primary">View all services <ArrowUpRight className="h-4 w-4" /></Link>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 rounded-2xl overflow-hidden border border-white/10">
-          {SERVICES_FULL.map((svc, i) => {
-            const Icon = svc.icon
-            return (
-              <div key={i} className="svc-tile bg-primary/50 p-7 sm:p-9 hover:bg-white/[0.03] transition-colors duration-300">
-                <div className="flex items-start justify-between mb-5">
-                  <Icon className="h-5 w-5 text-primary" strokeWidth={1.8} />
-                  <span className="font-mono text-[9px] text-white/20 uppercase tracking-widest">{String(i + 1).padStart(2, '0')}</span>
-                </div>
-                <h3 className="font-sans font-semibold text-lg sm:text-xl mb-2 text-white">{svc.title}</h3>
-                <p className="text-white/40 text-sm leading-relaxed">{svc.text}</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {SERVICES_FULL.map((s) => (
+            <div key={s.title} className="service-fade group rounded-2xl border border-divider bg-surface p-7 sm:p-8 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+              <div className="h-11 w-11 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
+                <s.icon className="h-5 w-5 text-primary" strokeWidth={1.8} />
               </div>
-            )
-          })}
-        </div>
-
-        <div className="mt-12 text-center">
-          <Link to="/services" className="btn-primary bg-white text-ink hover:bg-white/90 text-sm px-7 py-3.5">
-            View All Services <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </div>
-    </section>
-  )
-}
-
-function TrustSignals() {
-  const ref = useRef(null)
-  const [visible, setVisible] = useState(false)
-
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const observer = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) { setVisible(true); observer.disconnect() }
-    }, { threshold: 0.15 })
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-
-  const badges = [
-    { Icon: ShieldCheck, title: 'Licensed & Certified', text: 'Fully licensed private healthcare facility meeting all regulatory standards set by the Ghana Health Service.' },
-    { Icon: Award, title: '15+ Years of Service', text: 'Over 15 years serving the Pokuasi community with compassionate, quality healthcare you can count on.' },
-    { Icon: Clock, title: '24/7 Patient Care', text: 'Emergency services available around the clock, every day of the year. We never close our doors.' },
-  ]
-
-  return (
-    <section ref={ref} className="py-20 sm:py-28 px-6 sm:px-10 bg-background">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-12">
-          <span className="section-label">Why Trust Us</span>
-          <h2 className="font-sans font-semibold text-3xl sm:text-4xl lg:text-5xl text-ink mt-3 tracking-tight">More than a hospital.</h2>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-          {badges.map(({ Icon, title, text }, i) => (
-            <div key={i} style={{ transitionDelay: visible ? `${i * 100}ms` : '0ms' }} className={`bg-surface border border-divider rounded-2xl p-6 transition-all duration-700 ease-out ${visible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-              <Icon className="h-5 w-5 text-primary mb-3" strokeWidth={1.8} />
-              <h3 className="font-sans font-semibold text-base text-ink mb-1.5">{title}</h3>
-              <p className="text-muted text-sm leading-relaxed">{text}</p>
+              <h3 className="font-sans font-semibold text-xl text-ink">{s.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted">{s.text}</p>
             </div>
           ))}
         </div>
@@ -434,58 +313,62 @@ function TrustSignals() {
   )
 }
 
-function ContactForm() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
-
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    if (!form.name || !form.email || !form.message) return
-    const subj = encodeURIComponent(`Contact from ${form.name}`)
-    const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nLocation: ${form.zip}\n\nMessage:\n${form.message}`)
-    window.location.href = `mailto:info@stmoseshospital.com?subject=${subj}&body=${body}`
-  }
+function Trust() {
+  const items = [
+    { icon: ShieldCheck, title: 'Licensed & certified', text: 'We operate under Ghana Health Service standards and maintain strict clinical protocols.' },
+    { icon: Award, title: '23+ years of service', text: 'A trusted healthcare partner serving Pokuasi and neighbouring communities since 2003.' },
+    { icon: Clock, title: 'Always available', text: 'Emergency support and extended outpatient hours whenever you need care.' },
+  ]
 
   return (
-    <section id="contact" className="py-24 sm:py-32 px-6 sm:px-10 bg-background">
+    <section className="py-24 sm:py-32 px-6 sm:px-10">
       <div className="max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
-          <div className="lg:col-span-5">
-            <span className="section-label">Contact</span>
-            <h2 className="section-title mt-4">How can <span className="text-primary">we help?</span></h2>
-            <p className="text-muted text-base mt-6 leading-relaxed max-w-md">Share your details and we will get back to you as soon as possible to discuss your health needs.</p>
-
-            <div className="mt-10 space-y-5">
-              <a href="tel:0243474002" className="flex items-center gap-4 group">
-                <span className="h-11 w-11 rounded-xl bg-primary/10 flex items-center justify-center"><Phone className="h-4 w-4 text-primary" /></span>
-                <span><span className="block font-mono text-[9px] uppercase tracking-widest text-muted">Call us</span><span className="font-sans font-medium text-ink">0243-474002</span></span>
-              </a>
-              <a href="mailto:info@stmoseshospital.com" className="flex items-center gap-4 group">
-                <span className="h-11 w-11 rounded-xl bg-primary/10 flex items-center justify-center"><Mail className="h-4 w-4 text-primary" /></span>
-                <span><span className="block font-mono text-[9px] uppercase tracking-widest text-muted">Email us</span><span className="font-sans font-medium text-ink">info@stmoseshospital.com</span></span>
-              </a>
-              <div className="flex items-center gap-4">
-                <span className="h-11 w-11 rounded-xl bg-primary/10 flex items-center justify-center"><MapPin className="h-4 w-4 text-primary" /></span>
-                <span><span className="block font-mono text-[9px] uppercase tracking-widest text-muted">Location</span><span className="font-sans font-medium text-ink">Off Nsawam-Accra Rd, Opp Fraga Oil, Pokuasi</span></span>
-              </div>
+        <div className="max-w-2xl mb-14">
+          <span className="section-label">Why choose us</span>
+          <h2 className="section-title mt-4">Care you can <span className="text-primary">depend on.</span></h2>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {items.map((item) => (
+            <div key={item.title} className="rounded-2xl border border-divider bg-surface p-8">
+              <item.icon className="h-6 w-6 text-primary" strokeWidth={1.8} />
+              <h3 className="mt-5 font-sans text-lg font-semibold text-ink">{item.title}</h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted">{item.text}</p>
             </div>
-          </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
 
-          <div className="lg:col-span-7">
-            <form onSubmit={handleSubmit} className="bg-surface border border-divider rounded-2xl p-7 sm:p-10">
-              <div className="grid sm:grid-cols-2 gap-5">
-                <Field label="Name" required value={form.name} onChange={(v) => setForm({ ...form, name: v })} />
-                <Field label="Email" type="email" required value={form.email} onChange={(v) => setForm({ ...form, email: v })} />
-                <Field label="Phone" type="tel" value={form.phone} onChange={(v) => setForm({ ...form, phone: v })} />
-                <Field label="Location" value={form.zip} onChange={(v) => setForm({ ...form, zip: v })} />
+function Diagnostics() {
+  const diagnostics = [
+    { icon: Microscope, title: 'Laboratory', text: 'Reliable testing and timely results for effective diagnosis and treatment.' },
+    { icon: Syringe, title: 'Ultrasound & imaging', text: 'Modern imaging support for maternity, general diagnostics, and specialist care.' },
+    { icon: Baby, title: 'Maternal care', text: 'Support through antenatal care, delivery, and postnatal follow-up.' },
+  ]
+
+  return (
+    <section className="bg-deep px-6 py-24 text-white sm:px-10 sm:py-32">
+      <div className="mx-auto max-w-7xl">
+        <div className="grid items-center gap-14 lg:grid-cols-2">
+          <div>
+            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-white/45">Modern diagnostics</span>
+            <h2 className="mt-4 font-sans text-4xl font-semibold leading-tight sm:text-5xl">Clear answers. Better decisions.</h2>
+            <p className="mt-6 max-w-xl text-sm leading-relaxed text-white/60 sm:text-base">Our diagnostic services support faster, more accurate clinical decisions so patients receive the right care without unnecessary delay.</p>
+          </div>
+          <div className="grid gap-4">
+            {diagnostics.map((item) => (
+              <div key={item.title} className="rounded-2xl border border-white/10 bg-white/[0.04] p-6 sm:p-7">
+                <div className="flex gap-4">
+                  <div className="mt-1 h-10 w-10 shrink-0 rounded-xl bg-white/10 flex items-center justify-center"><item.icon className="h-5 w-5" /></div>
+                  <div>
+                    <h3 className="font-sans text-lg font-semibold">{item.title}</h3>
+                    <p className="mt-2 text-sm leading-relaxed text-white/55">{item.text}</p>
+                  </div>
+                </div>
               </div>
-              <div className="mt-5">
-                <label className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted mb-2 block">Message *</label>
-                <textarea value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} rows={4} className="w-full bg-background border border-divider rounded-xl px-4 py-3 text-sm text-ink placeholder:text-muted/50 focus:outline-none focus:border-primary transition-colors resize-none" placeholder="How can we help you?" />
-              </div>
-              <button type="submit" className="mt-6 btn-primary w-full bg-primary text-white hover:bg-primary-dark text-sm">
-                Send Message <ArrowRight className="h-4 w-4" />
-              </button>
-            </form>
+            ))}
           </div>
         </div>
       </div>
@@ -493,39 +376,34 @@ function ContactForm() {
   )
 }
 
-function Field({ label, type = 'text', required, value, onChange }) {
+function CTA() {
   return (
-    <div>
-      <label className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted mb-2 block">{label}{required ? ' *' : ''}</label>
-      <input type={type} value={value} onChange={(e) => onChange(e.target.value)} className="w-full bg-background border border-divider rounded-xl px-4 py-3 text-sm text-ink placeholder:text-muted/50 focus:outline-none focus:border-primary transition-colors" placeholder={label} />
-    </div>
+    <section className="px-6 py-24 sm:px-10 sm:py-32">
+      <div className="mx-auto max-w-7xl overflow-hidden rounded-3xl bg-primary px-6 py-14 text-center text-white sm:px-12 sm:py-20">
+        <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-white/50">We are here for you</span>
+        <h2 className="mx-auto mt-5 max-w-3xl font-sans text-4xl font-semibold leading-tight sm:text-5xl">Professional healthcare, whenever you need it.</h2>
+        <p className="mx-auto mt-5 max-w-xl text-sm leading-relaxed text-white/60 sm:text-base">Book a consultation or speak with our team for guidance on the right service for you and your family.</p>
+        <div className="mt-9 flex flex-col justify-center gap-4 sm:flex-row">
+          <Link to="/appointment" className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-7 py-4 text-sm font-semibold text-primary">Book Appointment <ArrowUpRight className="h-4 w-4" /></Link>
+          <a href="tel:0243474002" className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 px-7 py-4 text-sm font-semibold text-white"><Phone className="h-4 w-4" /> Call 0243-474002</a>
+        </div>
+      </div>
+    </section>
   )
 }
 
 function Footer() {
   return (
-    <footer className="bg-primary text-white/40 py-12 sm:py-16 px-6 sm:px-10 border-t border-white/5">
-      <div className="max-w-7xl mx-auto">
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6 mb-10">
-          <div className="bg-white rounded-xl p-2 inline-flex items-center justify-center">
-            <img src="/logo.png" alt="St Moses Hospital" className="h-11 w-auto" />
-          </div>
-          <div className="grid grid-cols-3 sm:flex sm:items-center gap-x-5 gap-y-2">
-            <a href="#home" className="font-sans text-xs uppercase tracking-[0.1em] text-white/40 hover:text-white transition-colors">Home</a>
-            <Link to="/about" className="font-sans text-xs uppercase tracking-[0.1em] text-white/40 hover:text-white transition-colors">About</Link>
-            <Link to="/services" className="font-sans text-xs uppercase tracking-[0.1em] text-white/40 hover:text-white transition-colors">Services</Link>
-            <Link to="/contact" className="font-sans text-xs uppercase tracking-[0.1em] text-white/40 hover:text-white transition-colors">Contact</Link>
-            <Link to="/appointment" className="font-sans text-xs uppercase tracking-[0.1em] text-white/40 hover:text-white transition-colors">Appointment</Link>
-          </div>
+    <footer className="bg-deep px-6 py-10 text-white sm:px-10">
+      <div className="mx-auto flex max-w-7xl flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+        <div>
+          <img src="/logo.png" alt="St Moses Hospital" className="h-12 w-auto" />
+          <p className="mt-4 max-w-md text-sm leading-relaxed text-white/45">Compassionate healthcare in Pokuasi, serving individuals and families with dignity, professionalism, and care.</p>
         </div>
-        <div className="h-px bg-white/5 mb-8" />
-        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs">
-          <p>© 2026 St Moses Hospital. All rights reserved.</p>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
-            <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
-            <Link to="/terms" className="hover:text-white transition-colors">Terms</Link>
-            <span className="w-full sm:w-auto text-white/30">Off Nsawam-Accra Rd, Opp Fraga Oil, Pokuasi</span>
-          </div>
+        <div className="space-y-3 text-sm text-white/55">
+          <a href="tel:0243474002" className="flex items-center gap-2 hover:text-white"><Phone className="h-4 w-4" /> 0243-474002</a>
+          <a href="mailto:info@stmoseshospital.com" className="flex items-center gap-2 hover:text-white"><Mail className="h-4 w-4" /> info@stmoseshospital.com</a>
+          <div className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0" /> Off Nsawam-Accra Road, opposite Fraga Oil, Pokuasi</div>
         </div>
       </div>
     </footer>
@@ -534,15 +412,15 @@ function Footer() {
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-background font-sans">
+    <div>
       <Navbar />
       <Hero />
       <Features />
       <Pillars />
-      <Protocol />
-      <ServicesGrid />
-      <TrustSignals />
-      <ContactForm />
+      <Services />
+      <Trust />
+      <Diagnostics />
+      <CTA />
       <Footer />
     </div>
   )
