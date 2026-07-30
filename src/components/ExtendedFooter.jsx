@@ -35,10 +35,46 @@ export default function ExtendedFooter() {
 
   useEffect(() => {
     const existingFooter = document.querySelector('footer:not([data-extended-footer])')
-    if (!existingFooter) return undefined
-    const previousDisplay = existingFooter.style.display
-    existingFooter.style.display = 'none'
-    return () => { existingFooter.style.display = previousDisplay }
+    const previousDisplay = existingFooter?.style.display
+    if (existingFooter) existingFooter.style.display = 'none'
+
+    const updateServiceYears = () => {
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT)
+      let node = walker.nextNode()
+
+      while (node) {
+        const replacements = [
+          ['15 years', '23 years'],
+          ['15+ Years', '23+ Years'],
+          ['over 15 years', 'over 23 years'],
+          ['A decade and a half', 'More than two decades'],
+        ]
+
+        let updatedText = node.nodeValue
+        replacements.forEach(([from, to]) => {
+          updatedText = updatedText.replaceAll(from, to)
+        })
+
+        if (updatedText !== node.nodeValue) node.nodeValue = updatedText
+        node = walker.nextNode()
+      }
+
+      document.querySelectorAll('*').forEach((element) => {
+        if (element.textContent?.trim() !== 'Years of service') return
+        const card = element.parentElement
+        const counter = card?.querySelector('span.font-bold')
+        if (counter && counter.textContent !== '23') counter.textContent = '23'
+      })
+    }
+
+    updateServiceYears()
+    const observer = new MutationObserver(updateServiceYears)
+    observer.observe(document.body, { childList: true, subtree: true, characterData: true })
+
+    return () => {
+      observer.disconnect()
+      if (existingFooter) existingFooter.style.display = previousDisplay
+    }
   }, [])
 
   const subscribe = (event) => {
@@ -118,7 +154,7 @@ export default function ExtendedFooter() {
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
             <div>
               <p className="text-sm text-white/55">© 2026 St Moses Hospital. All rights reserved.</p>
-              <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/35">Serving Pokuasi and neighbouring communities with professional, patient-centred healthcare for over 15 years.</p>
+              <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/35">Serving Pokuasi and neighbouring communities with professional, patient-centred healthcare for over 23 years.</p>
             </div>
             <div className="flex flex-wrap gap-x-6 gap-y-3 text-sm text-white/45">
               <Link to="/privacy" className="hover:text-white transition-colors">Privacy</Link>
