@@ -4,6 +4,7 @@ import { Mail, MapPin, Phone, Send } from 'lucide-react'
 
 const COMPANY_LINKS = [
   ['About', '/about'],
+  ['Leadership', '/leadership'],
   ['Our Services', '/services'],
   ['Book Appointment', '/appointment'],
   ['Contact', '/contact'],
@@ -38,42 +39,36 @@ export default function ExtendedFooter() {
     const previousDisplay = existingFooter?.style.display
     if (existingFooter) existingFooter.style.display = 'none'
 
-    const updateServiceYears = () => {
-      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT)
-      let node = walker.nextNode()
+    const insertedLinks = []
+    const aboutLinks = Array.from(document.querySelectorAll('a[href="/about"]'))
 
-      while (node) {
-        const replacements = [
-          ['15 years', '23 years'],
-          ['15+ Years', '23+ Years'],
-          ['over 15 years', 'over 23 years'],
-          ['A decade and a half', 'More than two decades'],
-        ]
+    aboutLinks.forEach((aboutLink) => {
+      const isDesktopNavigation = aboutLink.classList.contains('nav-link')
+      const isMobileNavigation = aboutLink.classList.contains('text-3xl')
+      if (!isDesktopNavigation && !isMobileNavigation) return
 
-        let updatedText = node.nodeValue
-        replacements.forEach(([from, to]) => {
-          updatedText = updatedText.replaceAll(from, to)
+      const navigationContainer = aboutLink.parentElement
+      if (!navigationContainer || navigationContainer.querySelector('a[href="/leadership"]')) return
+
+      const leadershipLink = document.createElement('a')
+      leadershipLink.href = '/leadership'
+      leadershipLink.textContent = 'Leadership'
+      leadershipLink.className = aboutLink.className
+
+      if (isMobileNavigation) {
+        leadershipLink.addEventListener('click', () => {
+          const closeButton = document.querySelector('button[aria-label="Open menu"]')
+          closeButton?.blur()
         })
-
-        if (updatedText !== node.nodeValue) node.nodeValue = updatedText
-        node = walker.nextNode()
       }
 
-      document.querySelectorAll('*').forEach((element) => {
-        if (element.textContent?.trim() !== 'Years of service') return
-        const card = element.parentElement
-        const counter = card?.querySelector('span.font-bold')
-        if (counter && counter.textContent !== '23') counter.textContent = '23'
-      })
-    }
-
-    updateServiceYears()
-    const observer = new MutationObserver(updateServiceYears)
-    observer.observe(document.body, { childList: true, subtree: true, characterData: true })
+      aboutLink.insertAdjacentElement('afterend', leadershipLink)
+      insertedLinks.push(leadershipLink)
+    })
 
     return () => {
-      observer.disconnect()
       if (existingFooter) existingFooter.style.display = previousDisplay
+      insertedLinks.forEach((link) => link.remove())
     }
   }, [])
 
