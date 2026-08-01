@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Mail, MapPin, Phone } from 'lucide-react'
+import { SERVICES } from '../data/services.js'
 
 const COMPANY_LINKS = [
   ['About', '/about'],
@@ -10,18 +11,6 @@ const COMPANY_LINKS = [
   ['Contact', '/contact'],
   ['Privacy Policy', '/privacy'],
   ['Terms of Use', '/terms'],
-]
-
-const SERVICE_LINKS = [
-  'General OPD',
-  'Antenatal & Maternity',
-  'Dental Clinic',
-  'Eye Clinic',
-  'Laboratory Services',
-  'Ultrasound & X-Ray',
-  'CT Scan',
-  'Dietitian and Dietetic',
-  'Emergency Response',
 ]
 
 function FacebookIcon({ className = 'h-5 w-5' }) {
@@ -156,9 +145,15 @@ export default function ExtendedFooter() {
 
           <div className="lg:col-span-3">
             <h3 className="font-sans font-semibold text-base text-white mb-6">Services</h3>
-            <div className="flex flex-col gap-4">
-              {SERVICE_LINKS.map((service) => (
-                <Link key={service} to="/services" className="text-sm text-white/55 hover:text-white transition-colors">{service}</Link>
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+              {SERVICES.map((service) => (
+                <Link
+                  key={service.slug}
+                  to={`/services/${service.slug}`}
+                  className="text-sm text-white/55 transition-colors hover:text-white"
+                >
+                  {service.shortTitle}
+                </Link>
               ))}
             </div>
           </div>
