@@ -71,6 +71,22 @@ export default function ExtendedFooter() {
     const previousDisplay = existingFooter?.style.display
     if (existingFooter) existingFooter.style.display = 'none'
 
+    const homeNav = document.querySelector('#home')?.previousElementSibling || document.querySelector('nav.fixed')
+
+    const updateHomeNav = () => {
+      if (!(homeNav instanceof HTMLElement)) return
+      const hasScrolled = window.scrollY > 80
+
+      homeNav.style.setProperty('background', hasScrolled ? 'rgba(255,255,255,0.12)' : 'transparent', 'important')
+      homeNav.style.setProperty('backdrop-filter', hasScrolled ? 'blur(16px) saturate(130%)' : 'none', 'important')
+      homeNav.style.setProperty('-webkit-backdrop-filter', hasScrolled ? 'blur(16px) saturate(130%)' : 'none', 'important')
+      homeNav.style.setProperty('border-bottom', hasScrolled ? '1px solid rgba(255,255,255,0.18)' : '1px solid transparent', 'important')
+      homeNav.style.setProperty('box-shadow', hasScrolled ? '0 8px 28px rgba(0,0,0,0.08)' : 'none', 'important')
+    }
+
+    updateHomeNav()
+    window.addEventListener('scroll', updateHomeNav, { passive: true })
+
     const insertedLinks = []
     const aboutLinks = Array.from(document.querySelectorAll('a[href="/about"]'))
 
@@ -99,6 +115,7 @@ export default function ExtendedFooter() {
     })
 
     return () => {
+      window.removeEventListener('scroll', updateHomeNav)
       if (existingFooter) existingFooter.style.display = previousDisplay
       insertedLinks.forEach((link) => link.remove())
     }
