@@ -79,39 +79,24 @@
   }
 }
 
-/* The homepage navigation is completely transparent at the top.
-   A neutral, colourless glass surface appears progressively while scrolling. */
-#home ~ * {
-  --homepage-nav-glass: rgba(255, 255, 255, 0.14);
-}
-
-body > #root nav.fixed.top-0 {
+/* Homepage navbar: fully transparent at the top. */
+body > #root nav.fixed.top-0[style*="rgba(7,20,42"],
+body > #root nav.fixed.top-0[style*="rgba(7, 20, 42"] {
   background: transparent !important;
-  -webkit-backdrop-filter: blur(0) saturate(100%) !important;
-  backdrop-filter: blur(0) saturate(100%) !important;
+  -webkit-backdrop-filter: none !important;
+  backdrop-filter: none !important;
   border-bottom-color: transparent !important;
   box-shadow: none !important;
-  animation: homepage-nav-glass linear both;
-  animation-timeline: scroll(root block);
-  animation-range: 0 96px;
 }
 
-@keyframes homepage-nav-glass {
-  from {
-    background-color: rgba(255, 255, 255, 0) !important;
-    -webkit-backdrop-filter: blur(0) saturate(100%) !important;
-    backdrop-filter: blur(0) saturate(100%) !important;
-    border-bottom-color: rgba(255, 255, 255, 0) !important;
-    box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
-  }
-
-  to {
-    background-color: rgba(255, 255, 255, 0.14) !important;
-    -webkit-backdrop-filter: blur(18px) saturate(135%) !important;
-    backdrop-filter: blur(18px) saturate(135%) !important;
-    border-bottom-color: rgba(255, 255, 255, 0.2) !important;
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08) !important;
-  }
+/* Once React marks the navbar as scrolled, use a visible colourless glass surface. */
+body > #root nav.fixed.top-0[style*="rgba(11,61,145"],
+body > #root nav.fixed.top-0[style*="rgba(11, 61, 145"] {
+  background: rgba(255, 255, 255, 0.34) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(145%) !important;
+  backdrop-filter: blur(20px) saturate(145%) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.38) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
 }
 
 /* Alternating horizontal directions for the homepage hero carousel. */
@@ -134,10 +119,6 @@ body > #root nav.fixed.top-0 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  body > #root nav.fixed.top-0 {
-    animation: none;
-  }
-
   #home > .absolute.inset-0 > img {
     transition-duration: 300ms !important;
   }
