@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom'
 import { ArrowLeft } from 'lucide-react'
 
-export default function InteriorPageHeader({ label, title, accent }) {
+export default function InteriorPageHeader({
+  label,
+  title,
+  accent,
+  backTo = '/',
+  backLabel = 'Back to home',
+}) {
   return (
     <>
       <header className="border-b border-white/10 bg-primary text-white">
@@ -9,9 +15,12 @@ export default function InteriorPageHeader({ label, title, accent }) {
           <Link to="/" className="flex items-center gap-3" aria-label="St Moses Hospital home">
             <img src="/logo.png" alt="St Moses Hospital" className="h-10 w-auto sm:h-12" />
           </Link>
-          <Link to="/" className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.14em] text-white/65 transition-colors hover:text-white sm:text-sm">
+          <Link
+            to={backTo}
+            className="inline-flex min-h-11 items-center gap-2 text-xs font-medium uppercase tracking-[0.14em] text-white/65 outline-none transition-colors hover:text-white focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-primary sm:text-sm"
+          >
             <ArrowLeft className="h-4 w-4" />
-            Back to home
+            {backLabel}
           </Link>
         </div>
       </header>
