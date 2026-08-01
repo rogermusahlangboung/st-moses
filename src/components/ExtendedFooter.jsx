@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Mail, MapPin, Phone, Send } from 'lucide-react'
+import { Mail, MapPin, Phone } from 'lucide-react'
 
 const COMPANY_LINKS = [
   ['About', '/about'],
@@ -66,8 +66,6 @@ const SOCIAL_LINKS = [
 ]
 
 export default function ExtendedFooter() {
-  const [email, setEmail] = useState('')
-
   useEffect(() => {
     const existingFooter = document.querySelector('footer:not([data-extended-footer])')
     const previousDisplay = existingFooter?.style.display
@@ -105,12 +103,6 @@ export default function ExtendedFooter() {
       insertedLinks.forEach((link) => link.remove())
     }
   }, [])
-
-  const subscribe = (event) => {
-    event.preventDefault()
-    if (!email.trim()) return
-    window.location.href = `mailto:info@stmoseshospital.com?subject=${encodeURIComponent('Newsletter subscription')}&body=${encodeURIComponent(`Please add ${email.trim()} to the St Moses Hospital newsletter.`)}`
-  }
 
   return (
     <footer data-extended-footer className="bg-primary text-white border-t border-white/10 px-6 sm:px-10 pt-16 sm:pt-20 pb-8">
@@ -172,16 +164,6 @@ export default function ExtendedFooter() {
                 <span>info@stmoseshospital.com</span>
               </a>
             </div>
-
-            <form onSubmit={subscribe} className="mt-8">
-              <label htmlFor="footer-email" className="font-mono text-[10px] uppercase tracking-[0.18em] text-white/45 block mb-3">Health updates</label>
-              <div className="flex gap-2">
-                <input id="footer-email" type="email" required value={email} onChange={(event) => setEmail(event.target.value)} placeholder="Newsletter email" className="min-w-0 flex-1 rounded-xl border border-white/15 bg-white/10 px-4 py-3 text-sm text-white placeholder:text-white/35 focus:outline-none focus:border-white/40" />
-                <button type="submit" aria-label="Join newsletter" className="h-12 w-12 shrink-0 rounded-xl bg-white text-primary flex items-center justify-center hover:bg-white/90 transition-colors">
-                  <Send className="h-4 w-4" />
-                </button>
-              </div>
-            </form>
           </div>
         </div>
 
