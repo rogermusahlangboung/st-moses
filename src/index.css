@@ -79,11 +79,12 @@
   }
 }
 
-/* Keep the homepage navigation permanently attached to the viewport. */
+/* The homepage navigation belongs only to the hero header.
+   It scrolls away naturally with the hero instead of following the viewport. */
 body > #root nav.fixed.top-0 {
-  position: fixed !important;
+  position: absolute !important;
   inset: 0 0 auto 0 !important;
-  z-index: 9999 !important;
+  z-index: 50 !important;
   transform: none !important;
   translate: none !important;
   animation: none !important;
@@ -95,13 +96,12 @@ body > #root nav.fixed.top-0 {
   will-change: auto !important;
 }
 
-/* On mobile, anchor the logo directly to the visual viewport. */
+/* Keep the mobile logo and menu control inside the header layout. */
 @media (max-width: 1023px) {
   body > #root nav.fixed.top-0 > div > a[href="#home"] {
-    position: fixed !important;
-    top: max(8px, env(safe-area-inset-top)) !important;
-    left: 24px !important;
-    z-index: 10001 !important;
+    position: static !important;
+    inset: auto !important;
+    z-index: auto !important;
     transform: none !important;
     translate: none !important;
     animation: none !important;
@@ -109,10 +109,9 @@ body > #root nav.fixed.top-0 {
   }
 
   body > #root nav.fixed.top-0 button[aria-label="Open menu"] {
-    position: fixed !important;
-    top: max(10px, env(safe-area-inset-top)) !important;
-    right: 24px !important;
-    z-index: 10001 !important;
+    position: static !important;
+    inset: auto !important;
+    z-index: auto !important;
     width: 44px;
     height: 44px;
     padding: 0 !important;
