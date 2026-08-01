@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import { ArrowLeft, Phone, Mail, MapPin, ArrowRight } from 'lucide-react'
+import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react'
+import InteriorPageHeader from '../components/InteriorPageHeader.jsx'
 
 function Field({ label, type = 'text', required, value, onChange }) {
   return (
@@ -24,15 +24,7 @@ export default function Contact() {
 
   return (
     <div className="min-h-screen bg-background font-sans">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 pt-24 sm:pt-28 pb-4">
-        <Link to="/" className="inline-flex items-center gap-2 text-muted hover:text-ink font-medium mb-8 group">
-          <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" /> Back
-        </Link>
-        <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">Contact</span>
-        <h1 className="font-sans font-semibold text-3xl sm:text-5xl lg:text-6xl text-ink mt-3 leading-[1.05] tracking-tight max-w-3xl">
-          How can <span className="text-primary">we help?</span>
-        </h1>
-      </div>
+      <InteriorPageHeader label="CONTACT" title="How can" accent="we help?" />
 
       <section className="py-8 sm:py-12 px-6 sm:px-10 pb-24">
         <div className="max-w-7xl mx-auto">
