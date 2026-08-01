@@ -1,8 +1,9 @@
 import { useLayoutEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, CheckCircle, Stethoscope, FlaskConical, HeartPulse, Scissors, Radio, Smile, Pill, Eye, Ambulance, Users, Baby, ScanLine, UserCheck } from 'lucide-react'
+import { ArrowRight, CheckCircle, Stethoscope, FlaskConical, HeartPulse, Scissors, Radio, Smile, Pill, Eye, Ambulance, Users, Baby, ScanLine, UserCheck } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import InteriorPageHeader from '../components/InteriorPageHeader.jsx'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -70,21 +71,9 @@ export default function Services() {
 
   return (
     <div className="min-h-screen bg-background font-sans">
-      <div className="max-w-7xl mx-auto px-4 sm:px-10 lg:px-16 pt-24 sm:pt-28 pb-4 sm:pb-8">
-        <Link to="/" className="inline-flex items-center gap-2 text-muted hover:text-ink font-medium mb-8 group">
-          <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" /> Back
-        </Link>
+      <InteriorPageHeader label="OUR SERVICES" title="Complete care" accent="under one roof." />
 
-        <div className="mb-6">
-          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">Our Services</span>
-          <h1 className="font-sans font-semibold text-3xl sm:text-5xl lg:text-6xl text-ink mt-3 leading-[1.05] tracking-tight max-w-3xl">
-            Complete care
-            <span className="block text-primary">under one roof.</span>
-          </h1>
-        </div>
-      </div>
-
-      <section ref={containerRef} className="relative px-4 sm:px-6 py-4 sm:py-8">
+      <section ref={containerRef} className="relative px-4 sm:px-6 py-8 sm:py-12">
         <div className="space-y-6 sm:space-y-8 pb-24 sm:pb-32">
           {ALL_SERVICES.map((svc, idx) => {
             const Icon = svc.icon
