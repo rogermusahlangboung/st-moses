@@ -5,13 +5,15 @@ export const BRAND_DESCRIPTION =
 
 export const BRAND_IMAGE = '/logo.png'
 
-const LEGACY_BRAND_NAMES = ['St. Moses Hospital', 'St Moses Hospital']
+const BRAND_TOKEN = '__ST_MOSES_COMMUNITY_HOSPITAL__'
 
 export function replaceLegacyBranding(value) {
   if (typeof value !== 'string') return value
 
-  return LEGACY_BRAND_NAMES.reduce(
-    (updatedValue, legacyName) => updatedValue.split(legacyName).join(BRAND_NAME),
-    value,
-  )
+  return value
+    .replace(/St\.? Moses Community Hospital/gi, BRAND_TOKEN)
+    .replace(/St\.? Moses Hospital/gi, BRAND_TOKEN)
+    .replace(/\bSt\.? Moses\b/gi, BRAND_TOKEN)
+    .split(BRAND_TOKEN)
+    .join(BRAND_NAME)
 }
