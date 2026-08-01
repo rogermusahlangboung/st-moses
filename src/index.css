@@ -79,54 +79,57 @@
   }
 }
 
-/* Lock the homepage navigation to the viewport. Only page content scrolls. */
+/* Keep the homepage navigation permanently attached to the viewport. */
 body > #root nav.fixed.top-0 {
   position: fixed !important;
-  top: 0 !important;
-  right: 0 !important;
-  left: 0 !important;
+  inset: 0 0 auto 0 !important;
+  z-index: 9999 !important;
   transform: none !important;
   translate: none !important;
   animation: none !important;
   background: transparent !important;
   -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
-  border-bottom-color: transparent !important;
+  border: 0 !important;
   box-shadow: none !important;
+  will-change: auto !important;
 }
 
-/* Keep the logo and menu control anchored inside the stationary navigation. */
-body > #root nav.fixed.top-0 > div {
-  position: relative !important;
-  transform: none !important;
-  translate: none !important;
-}
+/* On mobile, anchor the logo directly to the visual viewport. */
+@media (max-width: 1023px) {
+  body > #root nav.fixed.top-0 > div > a[href="#home"] {
+    position: fixed !important;
+    top: max(8px, env(safe-area-inset-top)) !important;
+    left: 24px !important;
+    z-index: 10001 !important;
+    transform: none !important;
+    translate: none !important;
+    animation: none !important;
+    margin: 0 !important;
+  }
 
-body > #root nav.fixed.top-0 a[href="#home"],
-body > #root nav.fixed.top-0 button[aria-label="Open menu"] {
-  transform: none;
-}
-
-/* Only the mobile menu control uses a neutral translucent glass square. */
-body > #root nav.fixed.top-0 button[aria-label="Open menu"] {
-  width: 44px;
-  height: 44px;
-  padding: 0 !important;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.32);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.18);
-  -webkit-backdrop-filter: blur(14px) saturate(135%);
-  backdrop-filter: blur(14px) saturate(135%);
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-  transition: background-color 200ms ease, border-color 200ms ease, transform 200ms ease;
-}
-
-body > #root nav.fixed.top-0 button[aria-label="Open menu"]:active {
-  transform: scale(0.96);
-  background: rgba(255, 255, 255, 0.26);
+  body > #root nav.fixed.top-0 button[aria-label="Open menu"] {
+    position: fixed !important;
+    top: max(10px, env(safe-area-inset-top)) !important;
+    right: 24px !important;
+    z-index: 10001 !important;
+    width: 44px;
+    height: 44px;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transform: none !important;
+    translate: none !important;
+    animation: none !important;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.18);
+    -webkit-backdrop-filter: blur(14px) saturate(135%);
+    backdrop-filter: blur(14px) saturate(135%);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  }
 }
 
 /* Alternating horizontal directions for the homepage hero carousel. */
