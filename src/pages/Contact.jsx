@@ -4,78 +4,120 @@ import InteriorPageHeader from '../components/InteriorPageHeader.jsx'
 
 function Field({ label, type = 'text', required, value, onChange }) {
   return (
-    <div>
-      <label className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted mb-2 block">{label}{required ? ' *' : ''}</label>
-      <input type={type} value={value} onChange={(e) => onChange(e.target.value)} className="w-full bg-background border border-divider rounded-xl px-4 py-3 text-sm text-ink placeholder:text-muted/50 focus:outline-none focus:border-primary transition-colors" placeholder={label} />
+    <div className="border-b border-black/15 py-5">
+      <label className="mb-2 block text-[10px] font-medium uppercase tracking-[0.2em] text-muted">
+        {label}{required ? ' *' : ''}
+      </label>
+      <input
+        type={type}
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className="w-full bg-transparent py-1 text-base text-ink outline-none placeholder:text-muted/40"
+        placeholder={label}
+      />
     </div>
   )
 }
 
-export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', phone: '', message: '' })
+const CONTACT_ITEMS = [
+  { Icon: Phone, label: 'Call us', value: '0243-474002', href: 'tel:0243474002' },
+  { Icon: Phone, label: 'Alternate', value: '020-8631116', href: 'tel:0208631116' },
+  { Icon: Phone, label: 'Alternate', value: '0244-358900', href: 'tel:0244358900' },
+  { Icon: Mail, label: 'Email us', value: 'info@stmoseshospital.com', href: 'mailto:info@stmoseshospital.com' },
+  { Icon: MapPin, label: 'Location', value: 'Off Nsawam-Accra Rd, Opp Fraga Oil, Pokuasi' },
+]
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
+export default function Contact() {
+  const [form, setForm] = useState({ name: '', email: '', phone: '', zip: '', message: '' })
+
+  const handleSubmit = (event) => {
+    event.preventDefault()
     if (!form.name || !form.email || !form.message) return
-    const subj = encodeURIComponent(`Contact from ${form.name}`)
+    const subject = encodeURIComponent(`Contact from ${form.name}`)
     const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nLocation: ${form.zip}\n\nMessage:\n${form.message}`)
-    window.location.href = `mailto:info@stmoseshospital.com?subject=${subj}&body=${body}`
+    window.location.href = `mailto:info@stmoseshospital.com?subject=${subject}&body=${body}`
   }
 
   return (
-    <div className="min-h-screen bg-background font-sans">
+    <main className="min-h-screen bg-white font-sans text-ink">
       <InteriorPageHeader label="CONTACT" title="How can" accent="we help?" />
 
-      <section className="py-8 sm:py-12 px-6 sm:px-10 pb-24">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-20">
-            <div className="lg:col-span-5">
-              <p className="text-muted text-base leading-relaxed max-w-md">Share your details and we will get back to you as soon as possible to discuss your health needs.</p>
+      <section className="px-6 py-16 sm:px-10 sm:py-24 lg:py-28">
+        <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-12 lg:gap-20">
+          <div className="lg:col-span-5">
+            <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-primary">Get in touch</p>
+            <h2 className="mt-5 max-w-lg text-4xl font-medium leading-[1.04] tracking-[-0.045em] sm:text-5xl lg:text-6xl">
+              Tell us how we can support you.
+            </h2>
+            <p className="mt-6 max-w-md text-base leading-8 text-muted">
+              Share your details and we will get back to you as soon as possible to discuss your health needs.
+            </p>
 
-              <div className="mt-10 space-y-5">
-                <a href="tel:0243474002" className="flex items-center gap-4 group">
-                  <span className="h-11 w-11 rounded-xl bg-primary/10 flex items-center justify-center"><Phone className="h-4 w-4 text-primary" /></span>
-                  <span><span className="block font-mono text-[9px] uppercase tracking-widest text-muted">Call us</span><span className="font-sans font-medium text-ink">0243-474002</span></span>
-                </a>
-                <a href="tel:0208631116" className="flex items-center gap-4 group">
-                  <span className="h-11 w-11 rounded-xl bg-primary/10 flex items-center justify-center"><Phone className="h-4 w-4 text-primary" /></span>
-                  <span><span className="block font-mono text-[9px] uppercase tracking-widest text-muted">Alternate</span><span className="font-sans font-medium text-ink">020-8631116</span></span>
-                </a>
-                <a href="tel:0244358900" className="flex items-center gap-4 group">
-                  <span className="h-11 w-11 rounded-xl bg-primary/10 flex items-center justify-center"><Phone className="h-4 w-4 text-primary" /></span>
-                  <span><span className="block font-mono text-[9px] uppercase tracking-widest text-muted">Alternate</span><span className="font-sans font-medium text-ink">0244-358900</span></span>
-                </a>
-                <a href="mailto:info@stmoseshospital.com" className="flex items-center gap-4 group">
-                  <span className="h-11 w-11 rounded-xl bg-primary/10 flex items-center justify-center"><Mail className="h-4 w-4 text-primary" /></span>
-                  <span><span className="block font-mono text-[9px] uppercase tracking-widest text-muted">Email us</span><span className="font-sans font-medium text-ink">info@stmoseshospital.com</span></span>
-                </a>
-                <div className="flex items-center gap-4">
-                  <span className="h-11 w-11 rounded-xl bg-primary/10 flex items-center justify-center"><MapPin className="h-4 w-4 text-primary" /></span>
-                  <span><span className="block font-mono text-[9px] uppercase tracking-widest text-muted">Location</span><span className="font-sans font-medium text-ink">Off Nsawam-Accra Rd, Opp Fraga Oil, Pokuasi</span></span>
-                </div>
-              </div>
+            <div className="mt-12 border-y border-black/10">
+              {CONTACT_ITEMS.map(({ Icon, label, value, href }, index) => {
+                const content = (
+                  <>
+                    <Icon className="h-5 w-5 text-primary" strokeWidth={1.6} />
+                    <div>
+                      <span className="block text-[10px] font-medium uppercase tracking-[0.2em] text-muted">{label}</span>
+                      <span className="mt-1 block text-base font-medium leading-6 text-ink">{value}</span>
+                    </div>
+                  </>
+                )
+
+                const className = `grid grid-cols-[28px_1fr] gap-4 py-6 ${index > 0 ? 'border-t border-black/10' : ''}`
+                return href ? (
+                  <a key={`${label}-${value}`} href={href} className={`${className} transition-opacity hover:opacity-65`}>
+                    {content}
+                  </a>
+                ) : (
+                  <div key={`${label}-${value}`} className={className}>{content}</div>
+                )
+              })}
             </div>
+          </div>
 
-            <div className="lg:col-span-7">
-              <form onSubmit={handleSubmit} className="bg-surface border border-divider rounded-2xl p-7 sm:p-10">
-                <div className="grid sm:grid-cols-2 gap-5">
-                  <Field label="Name" required value={form.name} onChange={(v) => setForm({ ...form, name: v })} />
-                  <Field label="Email" type="email" required value={form.email} onChange={(v) => setForm({ ...form, email: v })} />
-                  <Field label="Phone" type="tel" value={form.phone} onChange={(v) => setForm({ ...form, phone: v })} />
-                  <Field label="Location" value={form.zip} onChange={(v) => setForm({ ...form, zip: v })} />
+          <div className="lg:col-span-7">
+            <div className="border-t border-black/15">
+              <p className="py-5 text-[11px] font-medium uppercase tracking-[0.2em] text-primary">Send a message</p>
+              <form onSubmit={handleSubmit}>
+                <div className="grid sm:grid-cols-2 sm:gap-x-8">
+                  <Field label="Name" required value={form.name} onChange={(value) => setForm({ ...form, name: value })} />
+                  <Field label="Email" type="email" required value={form.email} onChange={(value) => setForm({ ...form, email: value })} />
+                  <Field label="Phone" type="tel" value={form.phone} onChange={(value) => setForm({ ...form, phone: value })} />
+                  <Field label="Location" value={form.zip} onChange={(value) => setForm({ ...form, zip: value })} />
                 </div>
-                <div className="mt-5">
-                  <label className="font-mono text-[9px] uppercase tracking-[0.2em] text-muted mb-2 block">Message *</label>
-                  <textarea value={form.message} onChange={(e) => setForm({ ...form, message: e.target.value })} rows={4} className="w-full bg-background border border-divider rounded-xl px-4 py-3 text-sm text-ink placeholder:text-muted/50 focus:outline-none focus:border-primary transition-colors resize-none" placeholder="How can we help you?" />
+
+                <div className="border-b border-black/15 py-5">
+                  <label className="mb-3 block text-[10px] font-medium uppercase tracking-[0.2em] text-muted">Message *</label>
+                  <textarea
+                    value={form.message}
+                    onChange={(event) => setForm({ ...form, message: event.target.value })}
+                    rows={7}
+                    className="w-full resize-none bg-transparent text-base leading-8 text-ink outline-none placeholder:text-muted/40"
+                    placeholder="How can we help you?"
+                  />
                 </div>
-                <button type="submit" className="mt-6 btn-primary w-full bg-primary text-white hover:bg-primary-dark text-sm">
-                  Send Message <ArrowRight className="h-4 w-4" />
-                </button>
+
+                <div className="mt-8 flex justify-end">
+                  <button type="submit" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-primary px-10 text-sm font-medium text-white transition-all hover:-translate-y-0.5 hover:bg-primary-dark">
+                    Send Message <ArrowRight className="h-4 w-4" />
+                  </button>
+                </div>
               </form>
             </div>
           </div>
         </div>
       </section>
-    </div>
+
+      <section className="border-y border-black/10 bg-[#f4f4f4] px-6 py-16 sm:px-10 sm:py-20">
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-12">
+          <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-primary lg:col-span-3">Visit St Moses</p>
+          <p className="max-w-3xl text-2xl font-medium leading-9 tracking-[-0.025em] lg:col-span-9 sm:text-3xl sm:leading-10">
+            Off Nsawam-Accra Road, opposite Fraga Oil, Pokuasi, Ghana.
+          </p>
+        </div>
+      </section>
+    </main>
   )
 }
