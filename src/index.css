@@ -60,7 +60,7 @@
   }
 
   .nav-link {
-    @apply font-sans text-[13px] font-medium tracking-normal transition-colors duration-300;
+    @apply font-sans text-[13px] font-medium tracking-normal transition-all duration-300;
   }
 
   .tesla-panel {
@@ -94,6 +94,30 @@ body > #root nav.fixed.top-0 {
   border: 0 !important;
   box-shadow: none !important;
   will-change: auto !important;
+}
+
+/* Give every desktop navigation item its own translucent glass surface. */
+@media (min-width: 1024px) {
+  body > #root nav.fixed.top-0 .nav-link {
+    display: inline-flex;
+    min-height: 40px;
+    align-items: center;
+    justify-content: center;
+    padding: 0 16px;
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.14);
+    -webkit-backdrop-filter: blur(14px) saturate(135%);
+    backdrop-filter: blur(14px) saturate(135%);
+    box-shadow: 0 5px 18px rgba(0, 0, 0, 0.1);
+  }
+
+  body > #root nav.fixed.top-0 .nav-link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.24);
+    border-color: rgba(255, 255, 255, 0.42);
+    transform: translateY(-1px);
+  }
 }
 
 /* Keep the mobile logo and menu control inside the header layout. */
