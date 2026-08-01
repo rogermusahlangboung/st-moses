@@ -79,9 +79,9 @@
   }
 }
 
-/* Homepage navbar: fully transparent at the top. */
-body > #root nav.fixed.top-0[style*="rgba(7,20,42"],
-body > #root nav.fixed.top-0[style*="rgba(7, 20, 42"] {
+/* Keep the homepage header fixed and completely transparent at every scroll position. */
+body > #root nav.fixed.top-0 {
+  position: fixed !important;
   background: transparent !important;
   -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
@@ -89,14 +89,26 @@ body > #root nav.fixed.top-0[style*="rgba(7, 20, 42"] {
   box-shadow: none !important;
 }
 
-/* Once React marks the navbar as scrolled, use a visible colourless glass surface. */
-body > #root nav.fixed.top-0[style*="rgba(11,61,145"],
-body > #root nav.fixed.top-0[style*="rgba(11, 61, 145"] {
-  background: rgba(255, 255, 255, 0.34) !important;
-  -webkit-backdrop-filter: blur(20px) saturate(145%) !important;
-  backdrop-filter: blur(20px) saturate(145%) !important;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.38) !important;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12) !important;
+/* Only the mobile menu control uses a neutral translucent glass square. */
+body > #root nav.fixed.top-0 button[aria-label="Open menu"] {
+  width: 44px;
+  height: 44px;
+  padding: 0 !important;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.18);
+  -webkit-backdrop-filter: blur(14px) saturate(135%);
+  backdrop-filter: blur(14px) saturate(135%);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transition: background-color 200ms ease, border-color 200ms ease, transform 200ms ease;
+}
+
+body > #root nav.fixed.top-0 button[aria-label="Open menu"]:active {
+  transform: scale(0.96);
+  background: rgba(255, 255, 255, 0.26);
 }
 
 /* Alternating horizontal directions for the homepage hero carousel. */
