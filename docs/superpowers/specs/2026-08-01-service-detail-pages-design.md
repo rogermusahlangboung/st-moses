@@ -19,6 +19,7 @@ Create a dedicated page for every hospital service currently listed on `/service
 - No unsupported clinical claims, guaranteed outcomes, prices, doctor schedules, or procedure availability.
 - No CMS, database, or new backend service.
 - No separate bespoke visual layout for each service.
+- No sticky local section index in the first implementation.
 - No changes to the existing appointment submission flow beyond linking to it.
 
 ## Routes
@@ -61,7 +62,7 @@ Each service object will include:
 - `category`
 - `summary`
 - `image`
-- `iconKey`
+- `icon`
 - `intro`
 - `servicesOffered`
 - `whoItMayHelp`
@@ -135,12 +136,13 @@ The component will read `slug` from `useParams()`, locate the matching service r
 - Accessible accordion using native buttons.
 - Keyboard operable.
 - Correct `aria-expanded` and associated panel IDs.
-- Only one or multiple panels may be open; implementation may choose multiple-open behavior for simplicity.
+- Multiple FAQ panels may remain open at the same time, avoiding hidden state coupling between questions.
 
 ### 10. Related services
 
 - Two or three related service links from `relatedSlugs`.
-- Compact editorial list with image thumbnails or text-only rows depending on available space.
+- Compact editorial list with image thumbnails.
+- Invalid related slugs are omitted rather than rendered as broken links.
 
 ### 11. Final CTA
 
@@ -190,23 +192,23 @@ Content must be:
 - Pages will not recommend medication doses or self-treatment.
 - Pages will not imply every listed examination or procedure is always available.
 - Preparation sections will advise patients to confirm instructions with the hospital.
-- Emergency content will direct users with urgent or life-threatening symptoms to call emergency services or the hospital immediately rather than rely on website information.
+- Emergency content will direct users with urgent or life-threatening symptoms to contact local emergency services or the hospital immediately rather than rely on website information.
 
 ## SEO and Metadata
 
 Each service record will provide a unique title and description.
 
-The detail page will update:
+On route changes, the detail page will update:
 
 - `document.title`
 - The page meta description, creating it if it does not already exist
-- Canonical path when practical within the current client-rendered architecture
+- A single `<link rel="canonical">`, creating or updating it to `${window.location.origin}/services/${service.slug}`
 
 Page titles will follow this pattern:
 
 `<Service Name> | St Moses Hospital Pokuasi`
 
-Descriptions will be concise, service-specific, and avoid keyword stuffing.
+Descriptions will be concise, service-specific, and avoid keyword stuffing. The previous document title and description do not need to be restored when navigating to another route because the destination page will set its own metadata or the application default will apply on reload.
 
 ## Accessibility
 
@@ -232,13 +234,14 @@ Descriptions will be concise, service-specific, and avoid keyword stuffing.
 ### Tablet
 
 - Wider text measure and occasional two-column lists.
-- Related services may use two columns.
+- Related services use two columns when space allows.
 
 ### Desktop
 
 - Large editorial hero.
 - Two-column content where it improves scanning.
-- Sticky local section index may be added only if it remains simple and does not interfere with the page header; it is not required for the first implementation.
+- Related services use a three-column layout.
+- No sticky local section index in the first implementation.
 
 ## Component Boundaries
 
@@ -255,14 +258,15 @@ Each component should have one clear responsibility and must not duplicate the s
 
 - Unknown slug: render a service-not-found section rather than crashing or showing a blank screen.
 - Missing optional arrays: omit the relevant section cleanly.
-- Missing image: use the hospital logo or a neutral service placeholder while preserving layout dimensions.
+- Missing image: use the hospital logo inside a neutral fixed-aspect placeholder while preserving layout dimensions.
 - Invalid related slug: skip that related item.
 - Metadata update failure must not block page rendering.
 
 ## Performance
 
-- Detail-page images use `loading="eager"` for the main hero and `loading="lazy"` for related thumbnails.
-- Images receive explicit dimensions or aspect-ratio containers to reduce layout shift.
+- Detail-page hero images use `loading="eager"` and `fetchPriority="high"`.
+- Related thumbnails use `loading="lazy"`.
+- Images receive explicit aspect-ratio containers to reduce layout shift.
 - One reusable page component prevents 15 duplicate component bundles.
 - No new runtime dependency is required.
 - Service data remains static and tree-shakeable.
@@ -281,7 +285,14 @@ Each component should have one clear responsibility and must not duplicate the s
 - Appointment links point to `/appointment`.
 - Telephone links point to `tel:0243474002`.
 - FAQ controls work with pointer and keyboard input.
+- Multiple FAQ panels can remain open.
 - Related-service links resolve correctly.
+
+### Metadata verification
+
+- Each service sets a unique title and description.
+- Only one canonical link exists after navigating between multiple service pages.
+- Unknown slugs do not retain misleading metadata from the previous valid service.
 
 ### Visual verification
 
@@ -314,9 +325,9 @@ The feature is complete when:
 2. Every overview entry has a Read More action.
 3. All pages use one consistent reusable editorial template.
 4. Each service page contains the approved sections and substantial patient-friendly content.
-5. Invalid service URLs fail gracefully.
+5. Invalid service URLs fail gracefully and use neutral metadata.
 6. The pages are responsive and keyboard accessible.
-7. Metadata changes per service.
+7. Metadata and canonical URLs change per service.
 8. The existing appointment and phone actions work.
 9. The production build passes.
 10. No new backend or third-party dependency is introduced.
