@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Send, Twitter } from 'lucide-react'
+import { Mail, MapPin, Phone, Send } from 'lucide-react'
 
 const COMPANY_LINKS = [
   ['About', '/about'],
@@ -24,11 +24,45 @@ const SERVICE_LINKS = [
   'Emergency Response',
 ]
 
+function FacebookIcon({ className = 'h-5 w-5' }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M13.5 21v-8h2.8l.42-3.2H13.5V7.75c0-.93.26-1.56 1.62-1.56H16.85V3.32A23.6 23.6 0 0 0 14.33 3C11.84 3 10.14 4.52 10.14 7.3v2.5H7.33V13h2.81v8h3.36Z" />
+    </svg>
+  )
+}
+
+function LinkedinIcon({ className = 'h-5 w-5' }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M6.46 8.33H3.15V21h3.31V8.33ZM4.8 3A1.93 1.93 0 1 0 4.8 6.86 1.93 1.93 0 0 0 4.8 3ZM21 13.74c0-3.81-2.03-5.58-4.74-5.58-2.18 0-3.16 1.2-3.71 2.04V8.33H9.24V21h3.31v-6.27c0-1.65.31-3.25 2.36-3.25 2.02 0 2.05 1.89 2.05 3.36V21H21v-7.26Z" />
+    </svg>
+  )
+}
+
+function InstagramIcon({ className = 'h-5 w-5' }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="none" stroke="currentColor" strokeWidth="1.9" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none" />
+    </svg>
+  )
+}
+
+function XIcon({ className = 'h-5 w-5' }) {
+  return (
+    <svg viewBox="0 0 24 24" className={className} fill="currentColor" aria-hidden="true">
+      <path d="M18.9 3H22l-6.77 7.74L23.2 21h-6.24l-4.89-6.39L6.48 21H3.36l7.25-8.29L2.96 3h6.4l4.42 5.84L18.9 3Zm-1.1 16.2h1.72L8.42 4.7H6.57L17.8 19.2Z" />
+    </svg>
+  )
+}
+
 const SOCIAL_LINKS = [
-  { label: 'Facebook', icon: Facebook },
-  { label: 'LinkedIn', icon: Linkedin },
-  { label: 'Instagram', icon: Instagram },
-  { label: 'X', icon: Twitter },
+  { label: 'Facebook', Icon: FacebookIcon },
+  { label: 'LinkedIn', Icon: LinkedinIcon },
+  { label: 'Instagram', Icon: InstagramIcon },
+  { label: 'X', Icon: XIcon },
 ]
 
 export default function ExtendedFooter() {
@@ -90,7 +124,7 @@ export default function ExtendedFooter() {
               St Moses Hospital provides compassionate, dependable healthcare for individuals and families in Pokuasi and surrounding communities. Your health remains our commitment.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              {SOCIAL_LINKS.map(({ label, icon: Icon }) => (
+              {SOCIAL_LINKS.map(({ label, Icon }) => (
                 <a
                   key={label}
                   href="#"
@@ -98,7 +132,7 @@ export default function ExtendedFooter() {
                   title={label}
                   className="h-11 w-11 rounded-xl border border-white/15 flex items-center justify-center text-white/65 hover:text-white hover:border-white/40 hover:bg-white/10 transition-all"
                 >
-                  <Icon className="h-5 w-5" strokeWidth={1.9} aria-hidden="true" />
+                  <Icon className="h-5 w-5" />
                 </a>
               ))}
             </div>
