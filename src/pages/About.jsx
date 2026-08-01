@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { ArrowLeft, ArrowRight, ShieldCheck, Award, Clock, Stethoscope, Activity } from 'lucide-react'
+import { ArrowRight, ShieldCheck, Award, Clock, Stethoscope, Activity } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import InteriorPageHeader from '../components/InteriorPageHeader.jsx'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -81,16 +82,7 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-background font-sans">
-      <div className="max-w-7xl mx-auto px-6 sm:px-10 pt-24 sm:pt-28 pb-4">
-        <Link to="/" className="inline-flex items-center gap-2 text-muted hover:text-ink font-medium mb-8 group">
-          <ArrowLeft className="h-4 w-4 transition-transform group-hover:-translate-x-0.5" /> Back
-        </Link>
-        <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">About St Moses</span>
-        <h1 className="font-sans font-semibold text-3xl sm:text-5xl lg:text-6xl text-ink mt-3 leading-[1.05] tracking-tight max-w-3xl">
-          Quality healthcare for
-          <span className="block text-primary">everyone.</span>
-        </h1>
-      </div>
+      <InteriorPageHeader label="ABOUT ST MOSES" title="Quality healthcare for" accent="everyone." />
 
       <section className="py-12 sm:py-16 px-6 sm:px-10 bg-surface border-y border-divider">
         <div className="max-w-4xl mx-auto">
