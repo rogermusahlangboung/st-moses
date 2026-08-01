@@ -109,9 +109,7 @@ export default function ExtendedFooter() {
       <div className="max-w-7xl mx-auto">
         <div className="grid gap-14 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-4">
-            <div className="bg-white rounded-2xl p-3 inline-flex items-center justify-center">
-              <img src="/logo.png" alt="St Moses Hospital" className="h-14 w-auto" />
-            </div>
+            <img src="/logo.png" alt="St Moses Hospital" className="h-14 w-auto" />
             <p className="mt-6 max-w-sm text-sm sm:text-base leading-relaxed text-white/60">
               St Moses Hospital provides compassionate, dependable healthcare for individuals and families in Pokuasi and surrounding communities. Your health remains our commitment.
             </p>
