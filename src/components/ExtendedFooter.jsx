@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { Mail, MapPin, Phone, Send } from 'lucide-react'
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Send, Twitter } from 'lucide-react'
 
 const COMPANY_LINKS = [
   ['About', '/about'],
@@ -25,10 +25,10 @@ const SERVICE_LINKS = [
 ]
 
 const SOCIAL_LINKS = [
-  { label: 'Facebook', mark: 'f' },
-  { label: 'LinkedIn', mark: 'in' },
-  { label: 'Instagram', mark: 'ig' },
-  { label: 'Twitter', mark: 'x' },
+  { label: 'Facebook', icon: Facebook },
+  { label: 'LinkedIn', icon: Linkedin },
+  { label: 'Instagram', icon: Instagram },
+  { label: 'X', icon: Twitter },
 ]
 
 export default function ExtendedFooter() {
@@ -90,9 +90,15 @@ export default function ExtendedFooter() {
               St Moses Hospital provides compassionate, dependable healthcare for individuals and families in Pokuasi and surrounding communities. Your health remains our commitment.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              {SOCIAL_LINKS.map(({ label, mark }) => (
-                <a key={label} href="#" aria-label={label} className="h-11 w-11 rounded-xl border border-white/15 flex items-center justify-center text-white/60 hover:text-white hover:border-white/35 transition-colors">
-                  <span className="text-xs font-semibold uppercase tracking-tight">{mark}</span>
+              {SOCIAL_LINKS.map(({ label, icon: Icon }) => (
+                <a
+                  key={label}
+                  href="#"
+                  aria-label={label}
+                  title={label}
+                  className="h-11 w-11 rounded-xl border border-white/15 flex items-center justify-center text-white/65 hover:text-white hover:border-white/40 hover:bg-white/10 transition-all"
+                >
+                  <Icon className="h-5 w-5" strokeWidth={1.9} aria-hidden="true" />
                 </a>
               ))}
             </div>
