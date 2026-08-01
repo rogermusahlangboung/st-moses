@@ -79,14 +79,32 @@
   }
 }
 
-/* Keep the homepage header fixed and completely transparent at every scroll position. */
+/* Lock the homepage navigation to the viewport. Only page content scrolls. */
 body > #root nav.fixed.top-0 {
   position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  left: 0 !important;
+  transform: none !important;
+  translate: none !important;
+  animation: none !important;
   background: transparent !important;
   -webkit-backdrop-filter: none !important;
   backdrop-filter: none !important;
   border-bottom-color: transparent !important;
   box-shadow: none !important;
+}
+
+/* Keep the logo and menu control anchored inside the stationary navigation. */
+body > #root nav.fixed.top-0 > div {
+  position: relative !important;
+  transform: none !important;
+  translate: none !important;
+}
+
+body > #root nav.fixed.top-0 a[href="#home"],
+body > #root nav.fixed.top-0 button[aria-label="Open menu"] {
+  transform: none;
 }
 
 /* Only the mobile menu control uses a neutral translucent glass square. */
