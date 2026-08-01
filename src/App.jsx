@@ -28,18 +28,25 @@ const SERVICES_FULL = [
 ]
 
 function Navbar() {
-  const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 80)
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
-  }, [])
 
   return (
     <>
-      <nav className="fixed top-0 left-0 right-0 z-50 transition-all duration-500" style={{ background: scrolled ? 'rgba(11,61,145,0.95)' : 'rgba(7,20,42,0.6)', backdropFilter: 'blur(12px)', borderBottom: scrolled ? '1px solid rgba(255,255,255,0.06)' : '1px solid rgba(255,255,255,0.04)' }}>
+      <nav
+        className="fixed inset-x-0 top-0 z-50 bg-transparent"
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          transform: 'none',
+          background: 'transparent',
+          backdropFilter: 'none',
+          WebkitBackdropFilter: 'none',
+          borderBottom: 'none',
+          boxShadow: 'none',
+        }}
+      >
         <div className="max-w-7xl mx-auto px-6 sm:px-10 flex items-center justify-between h-16 sm:h-20">
           <a href="#home" className="flex items-center gap-2">
             <img src="/logo.png" alt="St Moses Hospital" className="h-12 w-auto" />
@@ -63,7 +70,11 @@ function Navbar() {
             Book Appointment <ArrowUpRight className="h-3.5 w-3.5" strokeWidth={2.5} />
           </Link>
 
-          <button onClick={() => setOpen(true)} className="lg:hidden p-2 text-white" aria-label="Open menu">
+          <button
+            onClick={() => setOpen(true)}
+            className="lg:hidden inline-flex h-11 w-11 items-center justify-center rounded-lg border border-white/30 bg-white/20 text-white shadow-lg backdrop-blur-md"
+            aria-label="Open menu"
+          >
             <Menu className="h-5 w-5" />
           </button>
         </div>
