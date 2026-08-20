@@ -74,6 +74,15 @@ export default function ExtendedFooter() {
     }
 
     updateHomeNav()
+
+    // Keep every occurrence of the main hospital phone number consistently formatted.
+    const phoneLinks = Array.from(document.querySelectorAll('a[href="tel:0243474002"]'))
+    phoneLinks.forEach((link) => {
+      const text = link.querySelector('span')
+      if (text) text.textContent = '024-347-4002'
+      else link.textContent = '024-347-4002'
+    })
+
     window.addEventListener('scroll', updateHomeNav, { passive: true })
 
     const insertedLinks = []
@@ -167,7 +176,7 @@ export default function ExtendedFooter() {
               </div>
               <a href="tel:0243474002" className="flex items-center gap-3 hover:text-white transition-colors">
                 <Phone className="h-5 w-5 text-white shrink-0" />
-                <span>0243-474002</span>
+                <span>024-347-4002</span>
               </a>
               <a href="mailto:info@stmoseshospital.com" className="flex items-start gap-3 hover:text-white transition-colors break-all">
                 <Mail className="h-5 w-5 text-white shrink-0 mt-0.5" />
