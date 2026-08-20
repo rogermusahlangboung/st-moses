@@ -37,19 +37,25 @@ export default function Leadership() {
         </div>
       </section>
 
-      <section className="px-6 py-10 sm:px-10 sm:py-14">
-        <div className="mx-auto max-w-7xl">
-          <div className="relative overflow-hidden bg-[#f2f2f2]">
+      <section className="px-6 py-10 sm:px-10 sm:py-14 lg:py-20">
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
+          <div className="relative overflow-hidden bg-[#f2f2f2] lg:col-span-7">
             <img
               src="/leadership.jpg"
               alt="Rev. Roger Musah Langboung"
-              className="h-[62vh] min-h-[520px] w-full object-cover object-top sm:h-[72vh] lg:h-[78vh]"
+              className="block h-auto w-full object-contain"
             />
-            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent px-6 pb-7 pt-28 text-white sm:px-10 sm:pb-10">
+            <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/25 to-transparent px-6 pb-6 pt-24 text-white sm:px-8 sm:pb-8">
               <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-white/65">Chief Executive Officer</p>
               <p className="mt-3 max-w-3xl text-2xl font-medium leading-tight sm:text-4xl">Rev. Roger Musah Langboung</p>
               <p className="mt-2 text-sm text-white/70 sm:text-base">St. Moses Community Hospital</p>
             </div>
+          </div>
+
+          <div className="lg:col-span-5">
+            <p className="border-t border-black/15 pt-7 text-2xl font-medium leading-[1.45] tracking-[-0.025em] text-black sm:text-3xl sm:leading-[1.4]">
+              For three decades, Rev. Roger Musah Langboung has steered St. Moses Community Hospital with a steady hand and an unwavering commitment to the wellbeing of the communities it serves. As Chief Executive Officer, he has guided the institution through sustained growth, always anchoring its direction in a simple conviction: that quality healthcare is a right, not a privilege, and that every patient who walks through the hospital's doors deserves compassion, dignity, and excellence in care.
+            </p>
           </div>
         </div>
       </section>
@@ -66,11 +72,7 @@ export default function Leadership() {
           </aside>
 
           <article className="lg:col-span-8">
-            <p className="border-t border-black/15 pt-7 text-2xl font-medium leading-[1.45] tracking-[-0.025em] text-black sm:text-3xl sm:leading-[1.4]">
-              For three decades, Rev. Roger Musah Langboung has steered St. Moses Community Hospital with a steady hand and an unwavering commitment to the wellbeing of the communities it serves. As Chief Executive Officer, he has guided the institution through sustained growth, always anchoring its direction in a simple conviction: that quality healthcare is a right, not a privilege, and that every patient who walks through the hospital's doors deserves compassion, dignity, and excellence in care.
-            </p>
-
-            <div className="mt-12 grid gap-9 border-t border-black/10 pt-9 text-base leading-8 text-black/60 sm:text-lg sm:leading-9">
+            <div className="grid gap-9 border-t border-black/10 pt-9 text-base leading-8 text-black/60 sm:text-lg sm:leading-9">
               <p>
                 A reverend minister as well as a healthcare executive, Rev. Langboung brings a rare blend of pastoral compassion and administrative discipline to his leadership. He pursued his education in Toronto, Canada, an experience that shaped both his professional grounding and his broader worldview, before returning to devote his life's work to the hospital and the community around it.
               </p>
