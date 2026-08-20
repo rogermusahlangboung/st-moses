@@ -89,9 +89,9 @@ export default function Appointment() {
           <div className="mt-8 text-center">
             <p className="text-muted text-xs leading-relaxed flex flex-wrap items-center justify-center gap-x-2">
               <span>Prefer to call?</span>
-              <a href="tel:0243474002" className="text-primary hover:underline font-medium whitespace-nowrap">0243-474002</a>
+              <a href="tel:0243474002" className="text-primary hover:underline font-medium whitespace-nowrap">024-347-4002</a>
               <span className="text-muted/40">|</span>
-              <a href="tel:0208631116" className="text-primary hover:underline font-medium whitespace-nowrap">020-8631116</a>
+              <a href="tel:0208631116" className="text-primary hover:underline font-medium whitespace-nowrap">020-863-1116</a>
             </p>
           </div>
         </div>

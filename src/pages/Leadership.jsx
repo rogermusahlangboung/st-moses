@@ -60,7 +60,7 @@ export default function Leadership() {
             <div className="border-t border-black pt-5 lg:sticky lg:top-10">
               <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-black/45">Leadership profile</p>
               <p className="mt-4 max-w-xs text-2xl font-medium leading-tight tracking-[-0.03em] text-black sm:text-3xl">
-                Faith, service and disciplined leadership.
+                Faith, service and visionary leadership.
               </p>
             </div>
           </aside>
@@ -80,7 +80,11 @@ export default function Leadership() {
               </p>
 
               <p>
-                A firm believer in the power of accessible, community-rooted healthcare, Rev. Langboung continues to champion initiatives that strengthen the hospital's capacity, broaden its reach, and reinforce its mission of putting people first. His three decades at the helm reflect not only longevity, but a consistent legacy of faith, trust, service, and dedicated leadership.
+                Beyond healthcare, Rev. Langboung has demonstrated his commitment to developing the next generation of health professionals by establishing St. Moses University College of Health at Pokuase. This initiative reflects his vision of creating opportunities for quality health education and strengthening the healthcare workforce. His ability to look beyond the present and build institutions for the future is a defining part of his legacy as a visionary leader.
+              </p>
+
+              <p>
+                A firm believer in the power of accessible, community-rooted healthcare and education, Rev. Langboung continues to champion initiatives that strengthen the hospital's capacity, broaden its reach, and reinforce its mission of putting people first. His three decades at the helm reflect not only longevity, but a consistent legacy of faith, trust, service, vision, and dedicated leadership.
               </p>
             </div>
           </article>
