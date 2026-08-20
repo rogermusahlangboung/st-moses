@@ -1,0 +1,15 @@
+# SPA routing for Apache/Vite
+# Prevent 404 errors when refreshing React Router routes.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # Serve existing files and directories normally.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Send all other routes to the React entry point.
+  RewriteRule ^ index.html [L]
+</IfModule>
