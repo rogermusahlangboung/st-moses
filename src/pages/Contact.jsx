@@ -20,9 +20,9 @@ function Field({ label, type = 'text', required, value, onChange }) {
 }
 
 const CONTACT_ITEMS = [
-  { Icon: Phone, label: 'Call us', value: '0243-474002', href: 'tel:0243474002' },
-  { Icon: Phone, label: 'Alternate', value: '020-8631116', href: 'tel:0208631116' },
-  { Icon: Phone, label: 'Alternate', value: '0244-358900', href: 'tel:0244358900' },
+  { Icon: Phone, label: 'Call us', value: '024-347-4002', href: 'tel:0243474002' },
+  { Icon: Phone, label: 'Alternate', value: '020-863-1116', href: 'tel:0208631116' },
+  { Icon: Phone, label: 'Alternate', value: '024-435-8900', href: 'tel:0244358900' },
   { Icon: Mail, label: 'Email us', value: 'info@stmoseshospital.com', href: 'mailto:info@stmoseshospital.com' },
   { Icon: MapPin, label: 'Location', value: 'Off Nsawam-Accra Rd, Opp Fraga Oil, Pokuasi' },
 ]
