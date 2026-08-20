@@ -48,10 +48,10 @@ function XIcon({ className = 'h-5 w-5' }) {
 }
 
 const SOCIAL_LINKS = [
-  { label: 'Facebook', Icon: FacebookIcon },
-  { label: 'LinkedIn', Icon: LinkedinIcon },
-  { label: 'Instagram', Icon: InstagramIcon },
-  { label: 'X', Icon: XIcon },
+  { label: 'Facebook', href: 'https://www.facebook.com/share/1KHbYYBFiN/', Icon: FacebookIcon },
+  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/st-moses-community-hospital-b6182142b', Icon: LinkedinIcon },
+  { label: 'Instagram', href: 'https://www.instagram.com/stmosescommunityhospital?igsh=MWd6djRxOXkwc2ZlcA==', Icon: InstagramIcon },
+  { label: 'X', href: 'https://x.com/Stmoseshospital', Icon: XIcon },
 ]
 
 export default function ExtendedFooter() {
@@ -129,10 +129,12 @@ export default function ExtendedFooter() {
               St Moses Hospital provides compassionate, dependable healthcare for individuals and families in Pokuasi and surrounding communities. Your health remains our commitment.
             </p>
             <div className="mt-7 flex flex-wrap gap-3">
-              {SOCIAL_LINKS.map(({ label, Icon }) => (
+              {SOCIAL_LINKS.map(({ label, href, Icon }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   aria-label={label}
                   title={label}
                   className="h-11 w-11 rounded-xl border border-white/15 flex items-center justify-center text-white/65 hover:text-white hover:border-white/40 hover:bg-white/10 transition-all"
