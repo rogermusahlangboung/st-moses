@@ -66,7 +66,7 @@ export default function Leadership() {
             <div className="border-t border-black pt-5 lg:sticky lg:top-10">
               <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-black/45">Leadership profile</p>
               <p className="mt-4 max-w-xs text-2xl font-medium leading-tight tracking-[-0.03em] text-black sm:text-3xl">
-                Faith, service and visionary leadership.
+                Faith, service and disciplined leadership.
               </p>
             </div>
           </aside>
@@ -78,15 +78,15 @@ export default function Leadership() {
               </p>
 
               <p>
+                Beyond hospital administration, Rev. Langboung is the Founder of St. Moses University College of Health — an extension of his vision to build not just a hospital, but a sustainable ecosystem for healthcare in Ghana. Through the University College, he is investing in the next generation of health professionals, ensuring that community-rooted, ethical, and competent care continues far beyond the walls of St. Moses.
+              </p>
+
+              <p>
                 Under his leadership, St. Moses Community Hospital has grown into a trusted pillar of community health, known for its patient-centered culture and its dedication to service. Rev. Langboung's approach to leadership blends operational discipline with genuine empathy — he is as attentive to the experience of patients and families as he is to the strategic future of the institution.
               </p>
 
               <p>
-                Beyond healthcare, Rev. Langboung has demonstrated his commitment to developing the next generation of health professionals by establishing St. Moses University College of Health at Pokuase. This initiative reflects his vision of creating opportunities for quality health education and strengthening the healthcare workforce. His ability to look beyond the present and build institutions for the future is a defining part of his legacy as a visionary leader.
-              </p>
-
-              <p>
-                A firm believer in the power of accessible, community-rooted healthcare and education, Rev. Langboung continues to champion initiatives that strengthen the hospital's capacity, broaden its reach, and reinforce its mission of putting people first. His three decades at the helm reflect not only longevity, but a consistent legacy of faith, trust, service, vision, and dedicated leadership.
+                A firm believer in the power of accessible, community-rooted healthcare and education, Rev. Langboung continues to champion initiatives that strengthen capacity, broaden reach, and reinforce a single mission: putting people first. His three decades at the helm reflect not only longevity, but a consistent legacy of faith, trust, service, and dedicated leadership.
               </p>
             </div>
           </article>
