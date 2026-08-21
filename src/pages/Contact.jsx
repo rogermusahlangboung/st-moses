@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Phone, Mail, MapPin, ArrowRight } from 'lucide-react'
 import InteriorPageHeader from '../components/InteriorPageHeader.jsx'
+import { usePageSeo } from '../seo.js'
 
 function Field({ label, type = 'text', required, value, onChange }) {
   return (
@@ -28,6 +29,7 @@ const CONTACT_ITEMS = [
 ]
 
 export default function Contact() {
+  usePageSeo('/contact')
   const [form, setForm] = useState({ name: '', email: '', phone: '', zip: '', message: '' })
 
   const handleSubmit = (event) => {
