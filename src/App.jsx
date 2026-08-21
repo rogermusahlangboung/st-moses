@@ -115,7 +115,7 @@ const HERO_SLIDES = [
   '/ultrasound.jpg',
   '/eye.jpg',
   '/ct-scan.jpg',
-  '/x-ray.jpg',
+  '/xray.jpg',
   '/emergency.png',
   '/dental.avif',
 ]
