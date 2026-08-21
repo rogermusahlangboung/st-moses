@@ -115,6 +115,7 @@ const HERO_SLIDES = [
   '/ultrasound.jpg',
   '/eye.jpg',
   '/ct-scan.jpg',
+  '/x-ray.jpg',
   '/emergency.png',
   '/dental.avif',
 ]
@@ -137,7 +138,7 @@ function Hero() {
         setPreviousSlide(current)
         return (current + 1) % HERO_SLIDES.length
       })
-    }, 8000)
+    }, 10000)
     return () => clearInterval(timer)
   }, [])
 
