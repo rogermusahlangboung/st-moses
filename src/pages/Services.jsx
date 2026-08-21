@@ -5,11 +5,13 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import InteriorPageHeader from '../components/InteriorPageHeader.jsx'
 import { SERVICES } from '../data/services.js'
+import { usePageSeo } from '../seo.js'
 
 gsap.registerPlugin(ScrollTrigger)
 
 export default function Services() {
   const containerRef = useRef(null)
+  usePageSeo('/services')
 
   useLayoutEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
