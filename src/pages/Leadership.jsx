@@ -1,7 +1,10 @@
 import { Link } from 'react-router-dom'
 import { ArrowLeft, ArrowUpRight } from 'lucide-react'
+import { usePageSeo } from '../seo.js'
 
 export default function Leadership() {
+  usePageSeo('/leadership')
+
   return (
     <main className="min-h-screen bg-white text-ink">
       <header className="border-b border-black/10 bg-white">
