@@ -75,7 +75,6 @@ export default function ExtendedFooter() {
 
     updateHomeNav()
 
-    // Keep every occurrence of the main hospital phone number consistently formatted.
     const phoneLinks = Array.from(document.querySelectorAll('a[href="tel:0243474002"]'))
     phoneLinks.forEach((link) => {
       const text = link.querySelector('span')
@@ -158,11 +157,7 @@ export default function ExtendedFooter() {
             <h3 className="font-sans font-semibold text-base text-white mb-6">Services</h3>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
               {SERVICES.map((service) => (
-                <Link
-                  key={service.slug}
-                  to={`/services/${service.slug}`}
-                  className="text-sm text-white/55 transition-colors hover:text-white"
-                >
+                <Link key={service.slug} to={`/services/${service.slug}`} className="text-sm text-white/55 transition-colors hover:text-white">
                   {service.shortTitle}
                 </Link>
               ))}
@@ -180,9 +175,9 @@ export default function ExtendedFooter() {
                 <Phone className="h-5 w-5 text-white shrink-0" />
                 <span>024-347-4002</span>
               </a>
-              <a href="mailto:info@stmoseshospital.com" className="flex items-start gap-3 hover:text-white transition-colors break-all">
+              <a href="mailto:rogermusahlangboung4@gmail.com" className="flex items-start gap-3 hover:text-white transition-colors break-all">
                 <Mail className="h-5 w-5 text-white shrink-0 mt-0.5" />
-                <span>info@stmoseshospital.com</span>
+                <span>rogermusahlangboung4@gmail.com</span>
               </a>
             </div>
           </div>
