@@ -36,7 +36,7 @@ export default function Appointment() {
     const body = encodeURIComponent(
       `New Appointment Request\n\nName: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nDepartment: ${form.department}\nPreferred Date: ${form.date}\nPreferred Time: ${form.time || 'Not specified'}\n\nAdditional Notes:\n${form.message || 'None'}`
     )
-    window.location.href = `mailto:info@stmoseshospital.com?subject=${subj}&body=${body}`
+    window.location.href = `mailto:rogermusahlangboung4@gmail.com?subject=${subj}&body=${body}`
   }
 
   return (
