@@ -103,6 +103,16 @@ Build the website for production:
 npm run build
 ```
 
+## Website Development
+
+The **St. Moses Community Hospital website was developed by Baizor Technologies**.
+
+### Developer Contact
+
+- **Website:** https://www.baizor.site
+- **Phone:** 0541152033
+- **Email:** boarebrian@gmail.com
+
 ## Project Goal
 
 The goal of the website is to give patients and visitors a clear and simple way to learn about **St. Moses Community Hospital**, find health services, read service information, and contact the hospital.
