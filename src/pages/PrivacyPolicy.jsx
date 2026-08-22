@@ -18,7 +18,7 @@ export default function PrivacyPolicy() {
           <h2 className="font-sans font-semibold text-2xl text-ink mt-10">Data Protection</h2>
           <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
           <h2 className="font-sans font-semibold text-2xl text-ink mt-10">Contact</h2>
-          <p>For questions about this policy, contact us at info@stmoseshospital.com or call 024-347-4002.</p>
+          <p>For questions about this policy, contact us at rogermusahlangboung4@gmail.com or call 024-347-4002.</p>
           <p className="text-sm text-muted/60 mt-12">Last updated: July 2026</p>
         </div>
       </div>
