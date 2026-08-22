@@ -24,7 +24,7 @@ const CONTACT_ITEMS = [
   { Icon: Phone, label: 'Call us', value: '024-347-4002', href: 'tel:0243474002' },
   { Icon: Phone, label: 'Alternate', value: '020-863-1116', href: 'tel:0208631116' },
   { Icon: Phone, label: 'Alternate', value: '024-435-8900', href: 'tel:0244358900' },
-  { Icon: Mail, label: 'Email us', value: 'info@stmoseshospital.com', href: 'mailto:info@stmoseshospital.com' },
+  { Icon: Mail, label: 'Email us', value: 'rogermusahlangboung4@gmail.com', href: 'mailto:rogermusahlangboung4@gmail.com' },
   { Icon: MapPin, label: 'Location', value: 'Off Nsawam-Accra Rd, Opp Fraga Oil, Pokuasi' },
 ]
 
@@ -37,7 +37,7 @@ export default function Contact() {
     if (!form.name || !form.email || !form.message) return
     const subject = encodeURIComponent(`Contact from ${form.name}`)
     const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\nPhone: ${form.phone}\nLocation: ${form.zip}\n\nMessage:\n${form.message}`)
-    window.location.href = `mailto:info@stmoseshospital.com?subject=${subject}&body=${body}`
+    window.location.href = `mailto:rogermusahlangboung4@gmail.com?subject=${subject}&body=${body}`
   }
 
   return (
