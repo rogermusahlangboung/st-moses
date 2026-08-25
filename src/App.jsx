@@ -430,7 +430,7 @@ function Footer() {
         <div className="space-y-3 text-sm text-white/55">
           <a href="tel:0243474002" className="flex items-center gap-2 hover:text-white"><Phone className="h-4 w-4" /> 0243-474002</a>
           <a href="mailto:info@stmoseshospital.com" className="flex items-center gap-2 hover:text-white"><Mail className="h-4 w-4" /> info@stmoseshospital.com</a>
-          <div className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0" /> Off Nsawam-Accra Road, opposite Fraga Oil, Pokuasi</div>
+          <div className="flex items-start gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0" /> Nsawam/Kumasi Road</div>
         </div>
       </div>
     </footer>
