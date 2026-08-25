@@ -114,7 +114,7 @@ export default function Contact() {
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-12">
           <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-primary lg:col-span-3">Visit St Moses</p>
           <p className="max-w-3xl text-2xl font-medium leading-9 tracking-[-0.025em] lg:col-span-9 sm:text-3xl sm:leading-10">
-            Off Nsawam-Accra Road, opposite Fraga Oil, Pokuasi, Ghana.
+            Nsawam/Kumasi Road.
           </p>
         </div>
       </section>
