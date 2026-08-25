@@ -169,7 +169,7 @@ export default function ExtendedFooter() {
             <div className="space-y-5 text-sm text-white/60">
               <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-white shrink-0 mt-0.5" />
-                <span>Off Nsawam-Accra Road, opposite Fraga Oil, Pokuasi, Ghana</span>
+                <span> Nsawam/Kumasi Road</span>
               </div>
               <a href="tel:0243474002" className="flex items-center gap-3 hover:text-white transition-colors">
                 <Phone className="h-5 w-5 text-white shrink-0" />
