@@ -22,10 +22,8 @@ function Field({ label, type = 'text', required, value, onChange }) {
 
 const CONTACT_ITEMS = [
   { Icon: Phone, label: 'Call us', value: '024-347-4002', href: 'tel:0243474002' },
-  { Icon: Phone, label: 'Alternate', value: '020-863-1116', href: 'tel:0208631116' },
-  { Icon: Phone, label: 'Alternate', value: '024-435-8900', href: 'tel:0244358900' },
   { Icon: Mail, label: 'Email us', value: 'rogermusahlangboung4@gmail.com', href: 'mailto:rogermusahlangboung4@gmail.com' },
-  { Icon: MapPin, label: 'Location', value: 'Off Nsawam-Accra Rd, Opp Fraga Oil, Pokuasi' },
+  { Icon: MapPin, label: 'Location', value: 'Nsawam/Kumasi Road' },
 ]
 
 export default function Contact() {
